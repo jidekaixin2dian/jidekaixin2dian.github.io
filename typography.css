@@ -19,7 +19,10 @@ h2{font-family:var(--display);font-weight:750;letter-spacing:-.04em;line-height:
 .project-card h3,#ability-panel h3{letter-spacing:-.025em}
 .handoff-statement,.storage-statement{font-family:var(--display);font-weight:750;letter-spacing:-.03em;line-height:1.35}
 .about h2{font-weight:750;line-height:1.35}
-.oversize-mark{font-family:"Manrope",sans-serif;font-weight:800}
+.about-signature{gap:24px}
+.oversize-mark{font-family:"Manrope",sans-serif;font-weight:800;letter-spacing:-.07em;line-height:1.2;margin-left:0;padding-bottom:.03em;white-space:nowrap}
+.signature-dot{display:inline-block;width:.115em;height:.115em;margin-left:.045em;margin-bottom:.025em;border-radius:50%;background:var(--accent);font-size:1em;line-height:0;overflow:hidden;color:transparent;vertical-align:baseline}
+.about-signature .mono{margin-left:0}
 .story-navigation,[data-theme] .story-navigation{width:410px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;bottom:29px}
 .story-navigation button{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:10px;min-height:48px;padding:13px 0 8px;border-radius:0;background:none;font-size:14px;letter-spacing:.08em;color:var(--muted)}
 .story-navigation button::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:var(--line);transition:background .25s}
@@ -45,6 +48,8 @@ h2{font-family:var(--display);font-weight:750;letter-spacing:-.04em;line-height:
   .story-aside{bottom:112px}
   .story-aside button{font-size:11px}
   .about h2{font-size:30px}
+  .about-signature{gap:22px;align-items:center}
+  .about-signature .mono{margin-bottom:0}
   .story-stage::before{content:"";position:absolute;z-index:1;top:63%;left:20%;width:60%;height:5%;background:radial-gradient(ellipse,#0b1a0c25,transparent 68%);pointer-events:none}
 }
 @media(max-width:360px){.site-header nav{gap:13px;font-size:13px}.story-navigation,[data-theme] .story-navigation{gap:11px}.story-navigation button{gap:6px}.story-copy h2{font-size:26px}.story-copy{max-width:235px}.story-aside{bottom:101px}}
