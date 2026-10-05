@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f4ed">
+  <title>记得开心一点 · 把想法做成有用的东西</title>
+  <meta name="description" content="记得开心一点的个人作品实验室。探索帧律、PiWeb Desk、handoff、Windows 工具与 AI Agent 工作流，以及开源界面贡献。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23c8f663'/%3E%3Ctext x='8' y='45' font-family='Arial,sans-serif' font-size='39' font-weight='700' fill='%23111311'%3Ejk.%3C/text%3E%3C/svg%3E">
+  <script src="./theme.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./experience.css">
+  <link rel="stylesheet" href="./themes.css">
+  <script src="./projects.js" defer></script>
+  <script src="./site.js" defer></script>
+  <script src="./morph.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#work">跳到项目</a>
+  <header class="site-header">
+    <a class="wordmark" href="#home" aria-label="记得开心一点，返回首页"><span class="mark">jk.</span><span>记得开心一点</span></a>
+    <nav aria-label="主导航"><a href="#work">项目</a><a href="#abilities">能力</a><a href="#about">关于</a></nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="切换至暗色" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span id="theme-label">暗色</span></button><a class="github-link" href="https://github.com/jidekaixin2dian" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+  </header>
+  <main>
+    <section class="scroll-story" id="home" aria-labelledby="hero-title">
+      <div class="story-stage">
+        <div class="scene-headline"><h1 id="hero-title">MAKE<br><span>IT REAL.</span></h1></div>
+        <div id="sculpture" class="sculpture" role="img" aria-label="随页面滚动变化的巨大三维雕塑：流体球体、环形结构、连接结与重新聚合的方体。"><canvas id="sculpture-fallback" aria-hidden="true"></canvas></div>
+        <div class="scene-topline"><span>想法，正在成形。</span><span>WINDOWS / AI / OPEN SOURCE</span></div>
+        <div class="story-copy"><h2 id="story-title">把想法<br>做成有用的东西。</h2><p id="story-description">我是「记得开心一点」。<br>保持好奇，也把事情做完。</p><a class="story-link" href="#work">直接看作品</a></div>
+        <div class="story-aside"><span id="shape-label">LIQUID IDEA</span><button id="motion-toggle" aria-pressed="false">暂停自转</button></div>
+        <div class="story-navigation" aria-label="探索雕塑的四个阶段"><button data-phase="0" class="active" aria-pressed="true">聚合</button><button data-phase="1" aria-pressed="false">成形</button><button data-phase="2" aria-pressed="false">连接</button><button data-phase="3" aria-pressed="false">落地</button></div>
+        <div class="story-progress" aria-hidden="true"><div id="story-progress-fill"></div></div>
+      </div>
+    </section>
+    <section class="work shell" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><p class="eyebrow">SELECTED WORK</p><h2 id="work-title">从「能不能」<br>到「用得上」。</h2></div>
+      <div class="filter-group" aria-label="按领域筛选项目"><button class="filter active" data-filter="all" aria-pressed="true">全部作品</button><button class="filter" data-filter="windows" aria-pressed="false">Windows 工具</button><button class="filter" data-filter="agent" aria-pressed="false">AI 工作流</button><button class="filter" data-filter="interface" aria-pressed="false">界面与体验</button></div>
+      <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
+      <div id="projects" class="project-grid"></div>
+    </section>
+    <div id="extended-content"></div>
+  </main>
+  <footer class="shell"><a class="footer-brand" href="#home">记得开心一点。</a><span>KEEP CURIOUS. KEEP BUILDING.</span><span>© 2026 jidekaixin2dian</span></footer>
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono">PROJECT NOTES</span><button id="dialog-close" class="close-button" aria-label="关闭项目详情">关闭 ×</button></div><div id="dialog-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* Two studio environments for the same sculpture and the same portfolio. */
+.header-actions{display:flex;align-items:center;gap:12px}
+.theme-toggle{display:inline-flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--line);border-radius:var(--radius);padding:10px 14px;font-size:13px;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.theme-swatch{width:13px;height:13px;border-radius:50%;background:linear-gradient(90deg,var(--ink) 50%,var(--bg) 50%);border:1px solid var(--ink)}
+:root[data-theme="light"]{--bg:#f3f4ed;--surface:#fbfcf7;--raised:#e8eddf;--ink:#1a2318;--muted:#596453;--accent:#386b19;--line:#d0d8c6;color-scheme:light}
+[data-theme="light"] .site-header{border-color:#1a23181c}
+[data-theme="light"] .story-stage{background:radial-gradient(ellipse at 58% 42%,#fff 0%,#f3f4ed 48%,#e5eadc 100%)}
+[data-theme="light"] .scene-headline{mix-blend-mode:normal}
+[data-theme="light"] .scene-headline h1{color:#1a2318}
+[data-theme="light"] .scene-headline h1 span{-webkit-text-stroke-color:#637159}
+[data-theme="light"] .scene-topline{color:var(--muted)}
+[data-theme="light"] .story-copy{text-shadow:0 1px 3px #f3f4ed,0 0 28px #f3f4ed}
+[data-theme="light"] .story-stage::after{background:linear-gradient(transparent,#f3f4eddd)}
+[data-theme="light"] .story-navigation{background:#fbfcf7ed;border-color:#c8d3bd;box-shadow:0 5px 22px #2033170b}
+[data-theme="light"] .story-progress{background:#d9e1d1}
+[data-theme="light"] .primary:hover{background:#2b5412}
+[data-theme="light"] .project-card:hover{border-color:#7b9567}
+[data-theme="light"] .handoff-visual{background:linear-gradient(135deg,#e8efdd,#f8faf2)}
+[data-theme="light"] .handoff-flow i{background:#a3b390}
+[data-theme="light"] .storage-visual{background:repeating-linear-gradient(0deg,transparent,transparent 29px,#91a77c1c 29px,#91a77c1c 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,#91a77c1c 29px,#91a77c1c 30px),#edf2e4}
+[data-theme="light"] .storage-method span{border-color:#a3b390}
+[data-theme="light"] dialog::backdrop{background:#24321b69}
+@media(max-width:767px){.header-actions{gap:8px}.theme-toggle{padding:8px 11px;font-size:12px;gap:7px}.theme-swatch{width:12px;height:12px}.site-header{gap:12px}.site-header nav{gap:16px}}
+@media(max-width:480px){.header-actions .github-link{display:none}}
