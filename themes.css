@@ -12,7 +12,6 @@
 [data-theme="light"] .scene-topline{color:var(--muted)}
 [data-theme="light"] .story-copy{text-shadow:0 1px 3px #f3f4ed,0 0 28px #f3f4ed}
 [data-theme="light"] .story-stage::after{background:linear-gradient(transparent,#f3f4eddd)}
-[data-theme="light"] .story-navigation{background:#fbfcf7ed;border-color:#c8d3bd;box-shadow:0 5px 22px #2033170b}
 [data-theme="light"] .story-progress{background:#d9e1d1}
 [data-theme="light"] .primary:hover{background:#2b5412}
 [data-theme="light"] .project-card:hover{border-color:#7b9567}

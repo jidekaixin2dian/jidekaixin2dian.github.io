@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./experience.css">
   <link rel="stylesheet" href="./themes.css">
+  <link rel="preload" href="./fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/jk-text.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./typography.css">
   <script src="./projects.js" defer></script>
   <script src="./site.js" defer></script>
   <script src="./morph.js" type="module"></script>
@@ -18,7 +21,7 @@
 <body>
   <a class="skip-link" href="#work">跳到项目</a>
   <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="记得开心一点，返回首页"><span class="mark">jk.</span><span>记得开心一点</span></a>
+    <a class="wordmark" href="#home" aria-label="记得开心一点，返回首页"><span class="mark" aria-hidden="true">jk<span class="brand-dot">.</span></span><span>记得开心一点</span></a>
     <nav aria-label="主导航"><a href="#work">项目</a><a href="#abilities">能力</a><a href="#about">关于</a></nav>
     <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="切换至暗色" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span id="theme-label">暗色</span></button><a class="github-link" href="https://github.com/jidekaixin2dian" target="_blank" rel="noopener noreferrer">GitHub</a></div>
   </header>
@@ -30,7 +33,7 @@
         <div class="scene-topline"><span>想法，正在成形。</span><span>WINDOWS / AI / OPEN SOURCE</span></div>
         <div class="story-copy"><h2 id="story-title">把想法<br>做成有用的东西。</h2><p id="story-description">我是「记得开心一点」。<br>保持好奇，也把事情做完。</p><a class="story-link" href="#work">直接看作品</a></div>
         <div class="story-aside"><span id="shape-label">LIQUID IDEA</span><button id="motion-toggle" aria-pressed="false">暂停自转</button></div>
-        <div class="story-navigation" aria-label="探索雕塑的四个阶段"><button data-phase="0" class="active" aria-pressed="true">聚合</button><button data-phase="1" aria-pressed="false">成形</button><button data-phase="2" aria-pressed="false">连接</button><button data-phase="3" aria-pressed="false">落地</button></div>
+        <div class="story-navigation" aria-label="探索雕塑的四个阶段"><button data-phase="0" class="active" aria-label="聚合" aria-pressed="true"><span class="phase-number" aria-hidden="true">01</span><span>聚合</span></button><button data-phase="1" aria-label="成形" aria-pressed="false"><span class="phase-number" aria-hidden="true">02</span><span>成形</span></button><button data-phase="2" aria-label="连接" aria-pressed="false"><span class="phase-number" aria-hidden="true">03</span><span>连接</span></button><button data-phase="3" aria-label="落地" aria-pressed="false"><span class="phase-number" aria-hidden="true">04</span><span>落地</span></button></div>
         <div class="story-progress" aria-hidden="true"><div id="story-progress-fill"></div></div>
       </div>
     </section>
