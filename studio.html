@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN" data-presentation="studio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e9">
+  <title>实作档案 · 记得开心一点</title>
+  <meta name="description" content="记得开心一点的实作档案。从具体问题出发，浏览 Windows 工具、AI 工作流和开源实践。">
+  <link rel="canonical" href="https://jidekaixin2dian.github.io/studio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="实作档案 · 记得开心一点">
+  <meta property="og:description" content="好用的东西，从问题开始。一个持续动手的人的项目与方法。">
+  <meta property="og:image" content="https://jidekaixin2dian.github.io/share-cover.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='6' y='47' font-family='Arial,sans-serif' font-size='45' font-weight='700' fill='%23e5492b'%3Ejk.%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="./fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/jk-text.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./studio.css">
+  <link rel="stylesheet" href="./image-viewer.css">
+  <script src="./projects.js" defer></script>
+  <script src="./image-viewer.js" defer></script>
+  <script src="./studio.js" defer></script>
+</head>
+<body>
+  <a class="studio-skip" href="#work">跳到作品索引</a>
+  <header class="studio-header">
+    <a class="studio-brand" href="./studio.html" aria-label="实作档案首页"><span class="studio-mark" aria-hidden="true">jk<span>.</span></span><span>记得开心一点</span></a>
+    <nav aria-label="实作档案导航"><a href="#work">作品</a><a href="#process">方法</a><a href="#about">关于</a></nav>
+    <a class="presentation-link" href="./?theme=dark">雕塑版 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="studio-intro studio-shell" aria-labelledby="studio-title">
+      <div><p class="studio-intro-label">一个持续动手的人的实作档案</p><h1 id="studio-title">好用的东西，<br><span>从问题开始。</span></h1></div>
+      <div class="studio-intro-note"><span class="intro-rule" aria-hidden="true"></span><p>我喜欢折腾电脑，<br>也喜欢把折腾过的路铺平。</p><p class="intro-small">Windows 工具、AI 工作流与开源实践。<br>这里记录做过的东西，也记录怎么把事情做完。</p><a href="#work">浏览我的作品 <span aria-hidden="true">↘</span></a></div>
+    </section>
+    <section class="studio-work studio-shell" id="work" aria-labelledby="index-title">
+      <aside class="studio-index"><div class="index-heading"><h2 id="index-title">作品索引</h2><span id="studio-count">8 件</span></div><div id="studio-project-list" role="tablist" aria-label="选择作品" aria-orientation="vertical"></div><p class="index-note">点开一个项目，<br>看看问题、做法与结果。</p></aside>
+      <article id="studio-case" class="studio-case" role="tabpanel" aria-label="当前作品"></article>
+    </section>
+    <section class="studio-process studio-shell" id="process" aria-labelledby="process-title">
+      <div class="process-heading"><p>作品之外</p><h2 id="process-title">我怎么<br>把事情做完。</h2><span>好奇心负责开始，<br>验证和耐心负责走到最后。</span></div>
+      <div class="method-list">
+        <details class="method-step" open><summary><span>01</span><strong>先看清真实问题</strong><i aria-hidden="true">+</i></summary><p>看当前工作区、真实使用场景和已有证据。分清已经知道的事，以及还需要核实的部分。</p></details>
+        <details class="method-step"><summary><span>02</span><strong>把复杂拆开</strong><i aria-hidden="true">+</i></summary><p>让界面、配置、执行和恢复接成一条可用的流程。把复杂留给实现，把明确的选择留给使用者。</p></details>
+        <details class="method-step"><summary><span>03</span><strong>用结果验证判断</strong><i aria-hidden="true">+</i></summary><p>改动前看状态，执行后看结果。用实测、日志和可恢复方案减少猜测，不把技术检查等同于人工接受。</p></details>
+        <details class="method-step"><summary><span>04</span><strong>让下一次接得下去</strong><i aria-hidden="true">+</i></summary><p>留下当前状态、下一步和证据入口。上下文可以换，项目的线索要留下。</p></details>
+      </div>
+    </section>
+    <section class="studio-about studio-shell" id="about" aria-labelledby="studio-about-title"><h2 id="studio-about-title">记得开心一点。<br>也记得把事情做完。</h2><div><p>我关心一个工具能不能真的用起来，出了问题能不能查清楚，换个人接手能不能继续。</p><a class="studio-contact" href="https://github.com/jidekaixin2dian" target="_blank" rel="noopener">到 GitHub 认识我 <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="studio-footer studio-shell"><a href="./studio.html" class="footer-jk" aria-label="实作档案首页">jk<span>.</span></a><div><p>保持好奇，把事情做完。</p><span>jidekaixin2dian · © 2026</span></div><a href="./?theme=dark">换一种方式看作品 ↗</a></footer>
+</body>
+</html>

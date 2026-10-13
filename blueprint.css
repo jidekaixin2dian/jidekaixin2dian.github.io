@@ -27,7 +27,7 @@
 [data-theme=blueprint] .featured-heading>p{font-size:20px;color:var(--ink)}
 [data-theme=blueprint] .featured-layout{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:36px}
 [data-theme=blueprint] .interface-preview{border:2px solid var(--accent);border-radius:0;box-shadow:12px 12px 0 #dce5ff}
-[data-theme=blueprint] .featured-project:nth-child(2) .interface-preview{order:2}
+[data-theme=blueprint] .featured-project:nth-child(2) .interface-figure{order:2}
 [data-theme=blueprint] .featured-project:nth-child(2) .featured-copy{order:1}
 [data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.65fr)}
 [data-theme=blueprint] .primary{background:var(--accent);color:#fff}
@@ -53,4 +53,4 @@
 [data-theme=blueprint] dialog::backdrop{background:#18399555}
 [data-theme=blueprint] footer{background:#f2f4fb}
 @media(max-width:1100px){[data-theme=blueprint] .featured-layout,[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:1fr 1fr;gap:28px}}
-@media(max-width:767px){[data-theme=blueprint] .scene-headline{top:17%;left:22px}[data-theme=blueprint] .scene-headline h1{font-size:19.5vw;line-height:.95}[data-theme=blueprint] .blueprint-caption{display:none}[data-theme=blueprint] .story-stage{background-size:48px 48px}[data-theme=blueprint] .story-navigation{bottom:23px}[data-theme=blueprint] .work{padding-top:52px}[data-theme=blueprint] #work-title{font-size:43px}[data-theme=blueprint] .featured-layout,[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:1fr;gap:28px}[data-theme=blueprint] .featured-project:nth-child(2) .interface-preview{order:0}[data-theme=blueprint] .featured-project:nth-child(2) .featured-copy{order:0}[data-theme=blueprint] .interface-preview{box-shadow:7px 7px 0 #dce5ff}[data-theme=blueprint] .featured-heading>p{font-size:17px}[data-theme=blueprint] .about h2{font-size:30px}}
+@media(max-width:767px){[data-theme=blueprint] .scene-headline{top:17%;left:22px}[data-theme=blueprint] .scene-headline h1{font-size:19.5vw;line-height:.95}[data-theme=blueprint] .blueprint-caption{display:none}[data-theme=blueprint] .story-stage{background-size:48px 48px}[data-theme=blueprint] .story-navigation{bottom:23px}[data-theme=blueprint] .work{padding-top:52px}[data-theme=blueprint] #work-title{font-size:43px}[data-theme=blueprint] .featured-layout,[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:1fr;gap:28px}[data-theme=blueprint] .featured-project:nth-child(2) .interface-figure{order:0}[data-theme=blueprint] .featured-project:nth-child(2) .featured-copy{order:0}[data-theme=blueprint] .interface-preview{box-shadow:7px 7px 0 #dce5ff}[data-theme=blueprint] .featured-heading>p{font-size:17px}[data-theme=blueprint] .about h2{font-size:30px}}
