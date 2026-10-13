@@ -1,0 +1,56 @@
+/* Blueprint is a distinct visual direction: engineering paper, cobalt material,
+   square frames, offset type and ruled sections. It shares the same content. */
+:root[data-theme=blueprint]{--bg:#f2f4fb;--surface:#ffffff;--raised:#e8edfc;--ink:#153bb5;--muted:#566384;--accent:#1746ef;--line:#bfcdf0;--radius:2px;color-scheme:light}
+[data-theme=blueprint] body{background-image:linear-gradient(#1746ef07 1px,transparent 1px),linear-gradient(90deg,#1746ef07 1px,transparent 1px);background-size:36px 36px}
+[data-theme=blueprint] .site-header{border-color:#1746ef33;background:#f2f4fbcc}
+[data-theme=blueprint] .mark{color:var(--accent)}
+[data-theme=blueprint] .theme-menu{border-radius:2px}
+[data-theme=blueprint] .story-stage{background:linear-gradient(#1746ef13 1px,transparent 1px),linear-gradient(90deg,#1746ef13 1px,transparent 1px),#f2f4fb;background-size:72px 72px;isolation:isolate}
+[data-theme=blueprint] .story-stage::after{background:linear-gradient(transparent,#f2f4fbf0)}
+[data-theme=blueprint] .scene-headline{mix-blend-mode:normal;top:20%;left:6.5%;z-index:3!important}
+[data-theme=blueprint] .scene-headline h1{color:var(--accent);font-size:clamp(110px,13.5vw,204px);letter-spacing:-.08em;line-height:.95}
+[data-theme=blueprint] .scene-headline h1 span{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+[data-theme=blueprint] .scene-topline{color:var(--muted)}
+[data-theme=blueprint] .scene-topline>span:last-child{letter-spacing:.09em}
+[data-theme=blueprint] .blueprint-caption{display:flex;position:absolute;right:6.5%;top:115px;flex-direction:column;gap:7px;text-align:right;z-index:3;pointer-events:none;font-size:12px;letter-spacing:.04em;color:var(--muted)}
+[data-theme=blueprint] .scene-topline>span:last-child{display:none}
+[data-theme=blueprint] .story-copy{text-shadow:0 1px 2px #f2f4fb,0 0 30px #f2f4fb}
+[data-theme=blueprint] .story-copy h2{font-weight:800}
+[data-theme=blueprint] .story-navigation{bottom:29px}
+[data-theme=blueprint] .story-progress{background:#d2dcf5}
+[data-theme=blueprint] .work{position:relative;background:#f2f4fb;padding-top:85px}
+[data-theme=blueprint] .work .section-heading{padding-bottom:30px;border-bottom:2px solid var(--accent)}
+[data-theme=blueprint] .work-title,[data-theme=blueprint] #work-title{font-size:clamp(42px,5.6vw,80px);font-weight:800}
+[data-theme=blueprint] .filter{border-radius:0}
+[data-theme=blueprint] .featured-project{padding-top:28px;border-top:1px solid var(--accent)}
+[data-theme=blueprint] .featured-heading h3{color:var(--accent)}
+[data-theme=blueprint] .featured-heading>p{font-size:20px;color:var(--ink)}
+[data-theme=blueprint] .featured-layout{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:36px}
+[data-theme=blueprint] .interface-preview{border:2px solid var(--accent);border-radius:0;box-shadow:12px 12px 0 #dce5ff}
+[data-theme=blueprint] .featured-project:nth-child(2) .interface-preview{order:2}
+[data-theme=blueprint] .featured-project:nth-child(2) .featured-copy{order:1}
+[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.65fr)}
+[data-theme=blueprint] .primary{background:var(--accent);color:#fff}
+[data-theme=blueprint] .primary:hover{background:#1135c0}
+[data-theme=blueprint] .project-card{border:0;border-top:1px solid var(--accent);background:transparent;border-radius:0}
+[data-theme=blueprint] .project-body{padding:25px 0}
+[data-theme=blueprint] .project-card:hover{transform:none;border-color:var(--ink)}
+[data-theme=blueprint] .handoff-visual{background:#dce6ff}
+[data-theme=blueprint] .handoff-flow i{background:#8da9ef}
+[data-theme=blueprint] .storage-visual{background:repeating-linear-gradient(0deg,transparent,transparent 29px,#1746ef12 29px,#1746ef12 30px),#e7edff}
+[data-theme=blueprint] .storage-method span{border-color:#8da9ef}
+[data-theme=blueprint] .abilities{background:#1746ef;color:#fff;border-top:0}
+[data-theme=blueprint] .abilities .section-description{color:#dbe5ff}
+[data-theme=blueprint] .ability-tabs button{color:#c4d3ff;border-color:#ffffff44}
+[data-theme=blueprint] .ability-tabs button[aria-selected=true]{color:#fff}
+[data-theme=blueprint] .ability-tabs button:hover{color:#fff}
+[data-theme=blueprint] .ability-number{color:#c4d3ff}
+[data-theme=blueprint] #ability-panel{border:0;border-radius:0;color:var(--ink);background:#f2f4fb}
+[data-theme=blueprint] .about{background:#f2f4fb}
+[data-theme=blueprint] .about h2{font-size:clamp(30px,4vw,52px);font-weight:800}
+[data-theme=blueprint] .realization-screen{border:2px solid var(--accent);border-radius:0;box-shadow:12px 12px 0 #1746ef22}
+[data-theme=blueprint] .realization-caption{color:var(--muted)}
+[data-theme=blueprint] dialog::backdrop{background:#18399555}
+[data-theme=blueprint] footer{background:#f2f4fb}
+@media(max-width:1100px){[data-theme=blueprint] .featured-layout,[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:767px){[data-theme=blueprint] .scene-headline{top:17%;left:22px}[data-theme=blueprint] .scene-headline h1{font-size:19.5vw;line-height:.95}[data-theme=blueprint] .blueprint-caption{display:none}[data-theme=blueprint] .story-stage{background-size:48px 48px}[data-theme=blueprint] .story-navigation{bottom:23px}[data-theme=blueprint] .work{padding-top:52px}[data-theme=blueprint] #work-title{font-size:43px}[data-theme=blueprint] .featured-layout,[data-theme=blueprint] .featured-project:nth-child(2) .featured-layout{grid-template-columns:1fr;gap:28px}[data-theme=blueprint] .featured-project:nth-child(2) .interface-preview{order:0}[data-theme=blueprint] .featured-project:nth-child(2) .featured-copy{order:0}[data-theme=blueprint] .interface-preview{box-shadow:7px 7px 0 #dce5ff}[data-theme=blueprint] .featured-heading>p{font-size:17px}[data-theme=blueprint] .about h2{font-size:30px}}

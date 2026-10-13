@@ -1,38 +1,30 @@
 'use strict';
-// Apply before styles load, so returning visitors never see the wrong theme flash.
+// Apply before styles load. Every theme is also a directly shareable URL.
 (() => {
-  const root = document.documentElement;
-  const key = 'jk-portfolio-theme';
-  const requested = new URLSearchParams(location.search).get('theme');
-  let stored;
-  try { stored = localStorage.getItem(key); } catch { /* Storage may be unavailable. */ }
-  const valid = value => value === 'light' || value === 'dark';
-  function apply(theme, persist = false) {
-    root.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f3f4ed' : '#111311';
-    const button = document.querySelector('#theme-toggle');
-    if (button) {
-      const next = theme === 'light' ? '暗色' : '亮色';
-      button.setAttribute('aria-label', `切换至${next}`);
-      button.setAttribute('aria-pressed', String(theme === 'dark'));
-      document.querySelector('#theme-label').textContent = next;
+  const root=document.documentElement,key='jk-portfolio-theme';
+  const themes={light:{label:'亮色',color:'#f3f4ed'},dark:{label:'暗色',color:'#111311'},blueprint:{label:'蓝图',color:'#f2f4fb'}};
+  const requested=new URLSearchParams(location.search).get('theme');
+  let stored;try{stored=localStorage.getItem(key);}catch{}
+  const valid=value=>Object.hasOwn(themes,value);
+  function apply(theme,persist=false){
+    root.dataset.theme=theme;
+    document.querySelector('meta[name="theme-color"]').content=themes[theme].color;
+    const label=document.querySelector('#theme-label');if(label)label.textContent=themes[theme].label;
+    document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)));
+    if(persist){
+      try{localStorage.setItem(key,theme);}catch{}
+      const url=new URL(location.href);url.searchParams.set('theme',theme);history.replaceState(history.state,'',url);
     }
-    if (persist) {
-      try { localStorage.setItem(key, theme); } catch { /* Theme still works without storage. */ }
-      // A shared theme link chooses the initial look; a subsequent choice survives reload.
-      if (valid(requested)) {
-        const url = new URL(location.href);
-        url.searchParams.delete('theme');
-        history.replaceState(history.state, '', url);
-      }
-    }
-    window.dispatchEvent(new CustomEvent('portfolio-theme-change', { detail: { theme } }));
+    window.dispatchEvent(new CustomEvent('portfolio-theme-change',{detail:{theme}}));
   }
-  apply(valid(requested) ? requested : valid(stored) ? stored : 'light');
-  document.addEventListener('DOMContentLoaded', () => {
+  apply(valid(requested)?requested:valid(stored)?stored:'light');
+  document.addEventListener('DOMContentLoaded',()=>{
     apply(root.dataset.theme);
-    document.querySelector('#theme-toggle').addEventListener('click', () => {
-      apply(root.dataset.theme === 'light' ? 'dark' : 'light', true);
-    });
-  }, { once: true });
+    const toggle=document.querySelector('#theme-toggle'),menu=document.querySelector('#theme-menu');
+    function close(restoreFocus=false){menu.hidden=true;toggle.setAttribute('aria-expanded','false');if(restoreFocus)toggle.focus();}
+    toggle.addEventListener('click',()=>{const open=menu.hidden;menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));});
+    menu.addEventListener('click',e=>{const choice=e.target.closest('[data-theme-choice]');if(choice){apply(choice.dataset.themeChoice,true);close(true);}});
+    document.addEventListener('click',e=>{if(!e.target.closest('.theme-picker'))close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){close(true);e.preventDefault();}});
+  },{once:true});
 })();
