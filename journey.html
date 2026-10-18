@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN" data-presentation="journey">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101210">
+  <title>让想法，成为工具 · 记得开心一点</title>
+  <meta name="description" content="选一个你关心的问题，向下滚动，看一个想法如何展开，成为真正用得上的工具。">
+  <link rel="canonical" href="https://jidekaixin2dian.github.io/journey.html">
+  <meta property="og:title" content="让想法，成为工具 · 记得开心一点">
+  <meta property="og:description" content="一场由你滚动控制的作品体验。电脑调校、AI 工作流与项目交接。">
+  <meta property="og:image" content="https://jidekaixin2dian.github.io/share-cover.png">
+  <link rel="preload" href="./fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/jk-text.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fps-v030-dark.webp" as="image">
+  <link rel="stylesheet" href="./typography.css">
+  <link rel="stylesheet" href="./journey.css">
+  <link rel="stylesheet" href="./image-viewer.css">
+  <script src="./image-viewer.js" defer></script>
+  <script type="module" src="./journey.js"></script>
+</head>
+<body>
+  <a class="journey-skip" href="#evidence">跳到作品详情</a>
+  <header class="journey-header">
+    <a class="journey-brand" href="./" aria-label="记得开心一点首页"><span class="journey-mark" aria-hidden="true">jk<span>.</span></span><span>记得开心一点</span></a>
+    <span class="edition">一个想法的去向</span>
+    <a class="back-link" href="./?theme=dark">雕塑版 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="journey-story" id="experience" aria-label="让想法成为工具，滚动体验">
+      <div class="journey-stage">
+        <div id="journey-scene" aria-hidden="true"><div class="scene-fallback"></div></div>
+        <div class="stage-grain" aria-hidden="true"></div>
+        <div class="journey-intro">
+          <p class="intro-kicker">保持好奇，也把事情做完。</p>
+          <h1 aria-label="MAKE IT REAL.">MAKE<br><span class="hero-outline" aria-hidden="true"><span class="hero-outline-source">IT REAL.</span><svg aria-hidden="true" focusable="false"><text x="0" y="0" dominant-baseline="text-before-edge">IT REAL.</text></svg></span></h1>
+          <div class="intro-bottom"><p>想法有很多种形状。<br>这一次，让它变成你需要的工具。</p><button class="start-experience" data-jump=".25">往下，看看它会成为什么 <span aria-hidden="true">↓</span></button></div>
+        </div>
+        <div class="chapter-copy" aria-hidden="true"><p class="chapter-label" id="chapter-label">01 / 看清问题</p><h2 id="chapter-title">先看清，<br>再动手。</h2><p id="chapter-description"></p></div>
+        <div class="specimen-label" aria-hidden="true"><span id="specimen-name">FPS / SYSTEM TUNING</span><span>想法 → 结构 → 工具</span></div>
+        <div class="journey-outcome" id="outcome" aria-hidden="true" inert>
+          <div class="outcome-copy"><p class="chapter-label" id="outcome-meta"></p><h2 id="outcome-title"></h2><p id="outcome-description"></p><a id="outcome-link" href="#evidence">看看这个作品 <span aria-hidden="true">↘</span></a></div>
+          <div class="outcome-visual" id="outcome-visual"></div>
+        </div>
+        <div class="journey-bottom">
+          <div class="choice-heading"><span>你想解决什么？</span><button id="journey-motion" aria-pressed="false">暂停自转</button></div>
+          <div class="problem-choices" role="group" aria-label="选择一个问题">
+            <button data-problem="fps" aria-pressed="true"><span class="choice-index" aria-hidden="true">01</span>电脑调校<span class="choice-dot" aria-hidden="true"></span></button>
+            <button data-problem="context" aria-pressed="false"><span class="choice-index" aria-hidden="true">02</span>AI 工作流<span class="choice-dot" aria-hidden="true"></span></button>
+            <button data-problem="handoff" aria-pressed="false"><span class="choice-index" aria-hidden="true">03</span>项目交接<span class="choice-dot" aria-hidden="true"></span></button>
+          </div>
+        </div>
+        <div class="journey-meter" aria-hidden="true"><span></span></div>
+        <span class="sr-only" id="journey-status" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+    <section class="evidence-section" id="evidence" aria-labelledby="evidence-title">
+      <div class="evidence-heading"><p class="chapter-label">从形状，回到真实使用。</p><h2 id="evidence-title">真正有用，<br>才是最后的形状。</h2><p>这里的作品，从自己遇到的问题开始。<br>看真实界面，也看实现和边界。</p></div>
+      <article class="evidence-case" id="evidence-case"></article>
+      <a class="all-work" href="./studio.html#work"><span>继续翻阅全部作品</span><span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <footer class="journey-footer"><a href="./">记得开心一点。</a><span>KEEP CURIOUS. KEEP BUILDING.</span><a href="https://github.com/jidekaixin2dian" target="_blank" rel="noopener">GitHub ↗</a></footer>
+</body>
+</html>

@@ -30,6 +30,9 @@ h2{font-family:var(--display);font-weight:750;letter-spacing:-.04em;line-height:
 .about-signature{gap:24px}
 .oversize-mark{font-family:"Manrope",sans-serif;font-weight:800;letter-spacing:-.07em;line-height:1.2;margin-left:0;padding-bottom:.03em;white-space:nowrap}
 .signature-dot{display:inline-block;width:.115em;height:.115em;margin-left:.045em;margin-bottom:.025em;border-radius:50%;background:var(--accent);font-size:1em;line-height:0;overflow:hidden;color:transparent;vertical-align:baseline}
+.journey-entry{display:flex;justify-content:space-between;gap:20px;font-size:13px;border-top:1px solid var(--line);padding:17px 7px 10px;margin-top:13px;color:var(--ink)}
+.journey-entry span{color:var(--accent)}
+.story-link.direct-work{display:block;width:max-content;margin-top:12px;font-size:11px;color:var(--muted);border-color:transparent}
 .about-signature .mono{margin-left:0}
 .story-navigation,[data-theme] .story-navigation{width:410px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;bottom:29px}
 .story-navigation button{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:10px;min-height:48px;padding:13px 0 8px;border-radius:0;background:none;font-size:14px;letter-spacing:.08em;color:var(--muted)}
