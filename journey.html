@@ -15,11 +15,13 @@
   <link rel="preload" href="./fps-v030-dark.webp" as="image">
   <link rel="stylesheet" href="./typography.css">
   <link rel="stylesheet" href="./journey.css">
+  <link rel="stylesheet" href="./journey-worlds.css?v=2">
   <link rel="stylesheet" href="./image-viewer.css">
   <script src="./image-viewer.js" defer></script>
-  <script type="module" src="./journey.js"></script>
+  <script type="module" src="./journey.js?v=2"></script>
 </head>
 <body>
+  <script>{const world=new URLSearchParams(location.search).get('problem');document.body.dataset.world=['fps','context','handoff'].includes(world)?world:'fps';}</script>
   <a class="journey-skip" href="#evidence">跳到作品详情</a>
   <header class="journey-header">
     <a class="journey-brand" href="./" aria-label="记得开心一点首页"><span class="journey-mark" aria-hidden="true">jk<span>.</span></span><span>记得开心一点</span></a>
@@ -43,7 +45,7 @@
           <div class="outcome-visual" id="outcome-visual"></div>
         </div>
         <div class="journey-bottom">
-          <div class="choice-heading"><span>你想解决什么？</span><button id="journey-motion" aria-pressed="false">暂停自转</button></div>
+          <div class="choice-heading"><span>你想解决什么？</span><div class="journey-controls"><button id="journey-motion" aria-pressed="false">暂停自转</button><button id="journey-next">下一幕 <span aria-hidden="true">→</span></button></div></div>
           <div class="problem-choices" role="group" aria-label="选择一个问题">
             <button data-problem="fps" aria-pressed="true"><span class="choice-index" aria-hidden="true">01</span>电脑调校<span class="choice-dot" aria-hidden="true"></span></button>
             <button data-problem="context" aria-pressed="false"><span class="choice-index" aria-hidden="true">02</span>AI 工作流<span class="choice-dot" aria-hidden="true"></span></button>
