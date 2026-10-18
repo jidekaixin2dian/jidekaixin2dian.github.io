@@ -1,14 +1,14 @@
-import {createJourneyScene} from './journey-scene.js?v=2';
+import {createJourneyScene} from './journey-scene.js?v=3';
 const $=s=>document.querySelector(s), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const branches={
   fps:{mode:0,specimen:'FPS / SYSTEM TUNING',meta:'FPS 帧律 · v0.3.0',title:'每次调校，<br>都有依据。',description:'检测、审阅、实测与还原，接到同一张工作台。',chapters:[['先看清，<br>再动手。','系统设置分散在各处。先把这台电脑的状态放到一起。'],['先有依据，<br>再做改变。','把解释、审阅和备份接起来。用同机实测，判断改动是否值得保留。']],proof:'帧律 v0.3.0 把系统调校、按游戏限帧、DLSS 与显示配置、开局准备和统一恢复接到同一工作台。GUI 与 CLI 共用引擎，支持的设置写入前保存原值。',boundary:'实际收益取决于硬件、驱动和游戏条件，不承诺固定帧率提升。真实 FPS 采样需要官方 PresentMon；ICC 效果取决于应用支持，缓存清理不能还原。',source:'https://github.com/jidekaixin2dian/fps-tune',release:'https://github.com/jidekaixin2dian/fps-tune/releases/tag/v0.3.0'},
   context:{mode:1,specimen:'CONTEXT / LESS IS USEFUL',meta:'上下文预算 · 原创社区插件',title:'工具很多。<br>只带需要的。',description:'配置继续保留，暂时隐藏不需要的工具说明。',chapters:[['工具越多，<br>上下文越满。','MCP 工具的完整 schema 会进入请求。真正开始工作之前，先选好这一轮需要的工具。'],['配置留下。<br>上下文轻下来。','按服务器分组隐藏 schema。MCP 进程继续运行，需要时再恢复。']],proof:'上下文预算把配置与暴露分开：在 prompt 组装前，隐藏这一轮不需要的整组工具 schema。提供 MCP 服务器配置、Skill 管理和当前会话预算入口。',boundary:'这里展示的是机制示意，不是产品设置页。token 数为描述估算；部分在 Agent 作用域动态注册的 MCP 工具无法由此隐藏。独立社区插件，不代表 DeepSeek 官方产品。',source:'https://github.com/jidekaixin2dian/dsh-context-budget',release:'https://github.com/jidekaixin2dian/dsh-context-budget/releases/tag/v0.1.1'},
   handoff:{mode:2,specimen:'HANDOFF / KEEP GOING',meta:'handoff · 原创 Skill',title:'换个对话。<br>项目，接着做。',description:'留下可靠状态、下一步，以及找到证据的入口。',chapters:[['对话会结束。<br>线索不能断。','一个长任务，需要的不只是聊天记录。先核实工作区，分清完成与计划。'],['把状态、证据，<br>交到下一双手里。','整理一个轻量入口。背景按需读取，下一步从真实状态出发。']],proof:'handoff 先核实真实工作区，再把当前状态、下一步、关键约束与证据入口整理成交接文件。原始证据保留，细节按需读取，无需额外服务。',boundary:'展示内容为公开交接方法的结构示意，不是一次真实交接记录。检查通过与人工接受分别记录；没有跨模型评测或 token 节省测量。',source:'https://github.com/jidekaixin2dian/handoff',release:'https://github.com/jidekaixin2dian/handoff/blob/main/docs/example.md'}
 };
-const story=$('.journey-story'),stage=$('.journey-stage');let current='fps',phase=-1,uiFrame=0,paused=reduced.matches;
+const story=$('.journey-story'),stage=$('.journey-stage');let current='fps',phase=-1,paused=reduced.matches,lastPaintedProgress=-1,lastReduced=reduced.matches;
 const clamp=x=>Math.max(0,Math.min(1,x)),smooth=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t);};
 function target(){const rect=story.getBoundingClientRect();return clamp(-rect.top/Math.max(1,rect.height-stage.clientHeight));}
-const scene=createJourneyScene($('#journey-scene'),target);
+const scene=createJourneyScene($('#journey-scene'),target,p=>update(p));
 const documentMarkup=()=>`<div class="handoff-document"><small>HANDOFF / 公开方法 · 结构示意</small><h3>让下一次，接得下去。</h3><ol><li>当前状态<span>核实工作区</span></li><li>关键约束<span>保留已有工作</span></li><li>下一步<span>可执行的起点</span></li><li>证据入口<span>细节按需读取</span></li></ol></div>`;
 const schemas=()=>Array.from({length:16},()=>'<i></i>').join('');
 const mechanismMarkup=()=>`<div class="context-poster"><div class="context-stamp"><span>上下文预算</span><strong>机制示意</strong></div><div class="context-cloud" aria-hidden="true">${schemas()}</div><div class="context-selection"><span>GitHub</span><span>文件</span><span>本轮工具</span></div><p>不需要的 schema 暂时隐藏。<br>配置继续保留，需要时再恢复。</p></div>`;
@@ -23,8 +23,10 @@ function select(id,{route=true,restart=false}={}){
   scene.setMode(b.mode);renderEvidence();scene.resize();update();
   if(route){const url=new URL(location.href);url.searchParams.set('problem',id);history.replaceState(history.state,'',url);}
 }
-function update(){
-  uiFrame=0;const p=target(),b=branches[current],intro=$('.journey-intro'),chapter=$('.chapter-copy'),outcome=$('#outcome');
+function update(p=scene.getProgress()){
+  if(p===lastPaintedProgress&&reduced.matches===lastReduced&&phase>=0)return;
+  lastPaintedProgress=p;lastReduced=reduced.matches;
+  const b=branches[current],intro=$('.journey-intro'),chapter=$('.chapter-copy'),outcome=$('#outcome');
   const introOpacity=reduced.matches?Number(p<.15):1-smooth(.04,.2,p),chapterOpacity=reduced.matches?Number(p>=.15&&p<.82):smooth(.13,.23,p)*(1-smooth(.69,.8,p)),outcomeOpacity=reduced.matches?Number(p>=.82):smooth(.78,.90,p);
   intro.style.opacity=String(introOpacity);intro.style.transform=reduced.matches?'none':`translateY(${-smooth(0,.22,p)*45}px)`;intro.inert=p>.19;intro.setAttribute('aria-hidden',String(p>.19));
   chapter.style.opacity=String(chapterOpacity);chapter.setAttribute('aria-hidden',String(chapterOpacity<.5));
@@ -32,9 +34,9 @@ function update(){
   $('#journey-next').innerHTML=p>=.91?'再看一次 <span aria-hidden="true">↺</span>':p>.51?'看作品 <span aria-hidden="true">→</span>':'下一幕 <span aria-hidden="true">→</span>';$('.specimen-label').style.opacity=String(1-outcomeOpacity);$('.journey-meter span').style.transform=`scaleX(${p})`;
   const next=p<.15?0:p<.46?1:p<.82?2:3;
   if(next!==phase){phase=next;const copy=b.chapters[next>=2?1:0];$('#chapter-label').textContent=next<2?'01 / 看清问题':'02 / 形成结构';$('#chapter-title').innerHTML=copy[0];$('#chapter-description').textContent=copy[1];$('#journey-status').textContent=next===0?'已选择'+(current==='fps'?'电脑调校':current==='context'?'AI 工作流':'项目交接'):next===3?b.meta+'，向下查看作品详情':copy[0].replace('<br>','');}
-  stage.dataset.phase=String(next);stage.dataset.problem=current;scene.wake();
+  stage.dataset.phase=String(next);stage.dataset.problem=current;
 }
-function queueUpdate(){if(!uiFrame)uiFrame=requestAnimationFrame(update);}
+function queueUpdate(){scene.wake();}
 function jump(p,instant=false){const rect=story.getBoundingClientRect();window.scrollTo({top:window.scrollY+rect.top+(rect.height-stage.clientHeight)*p,behavior:instant||reduced.matches?'instant':'smooth'});}
 document.querySelectorAll('button[data-problem]').forEach((button,index)=>{button.addEventListener('click',()=>select(button.dataset.problem,{restart:button.dataset.problem!==current}));button.addEventListener('keydown',e=>{const buttons=[...document.querySelectorAll('button[data-problem]')];let next=index;if(e.key==='ArrowRight')next=(index+1)%3;else if(e.key==='ArrowLeft')next=(index+2)%3;else if(e.key==='Home')next=0;else if(e.key==='End')next=2;else return;e.preventDefault();buttons[next].focus();select(buttons[next].dataset.problem,{restart:buttons[next].dataset.problem!==current});});});
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>jump(Number(b.dataset.jump))));

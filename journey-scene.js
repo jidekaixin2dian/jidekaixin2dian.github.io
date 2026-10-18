@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three.module.js';
 
 // Different objects and materials, one reversible native-scroll timeline.
-export function createJourneyScene(host,getProgress){
+export function createJourneyScene(host,getProgress,onProgress=()=>{}){
   const mobile=matchMedia('(max-width: 767px)'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const smooth=(a,b,x)=>THREE.MathUtils.smoothstep(x,a,b),mix=THREE.MathUtils.lerp;
   let renderer,scene,camera,frame=0,active=true,paused=reduced.matches,last=0,spin=0,progress=0,mode=0,destroyed=false,lost=false;
@@ -108,13 +108,14 @@ export function createJourneyScene(host,getProgress){
   function draw(now){
     frame=0;if(!active||document.hidden||destroyed)return;
     const raw=(now-last)/1000,dt=Math.max(0,Math.min(raw,.045));last=now;const target=getProgress();
-    progress=reduced.matches?target:progress+(target-progress)*Math.min(1,dt*18);if(Math.abs(target-progress)<.0001)progress=target;
+    progress=reduced.matches?target:THREE.MathUtils.clamp(progress+(target-progress)*Math.min(1,dt*10),0,1);if(Math.abs(target-progress)<.0001)progress=target;
     if(!paused&&!reduced.matches&&progress<.45)spin+=dt;
     const p=reduced.matches?(progress<.18?0:progress<.48?.42:progress<.82?.78:1):progress;
     if(renderer&&!lost){updateFps(p);updateContext(p);updatePaper(p);scene.userData.progress=p;renderer.render(scene,camera);
       if(!adaptive&&raw>0){qualitySamples++;if(raw>.04)slowSamples++;if(qualitySamples>=90){if(slowSamples>45){adaptive=true;renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.25));resize();host.dataset.quality='adaptive';}qualitySamples=0;slowSamples=0;}}
     }
-    host.dataset.progress=progress.toFixed(4);const moving=Math.abs(target-progress)>.0001||Boolean(renderer&&!lost&&!paused&&!reduced.matches&&progress<.45);
+    host.dataset.progress=progress.toFixed(4);onProgress(progress);
+    const moving=Math.abs(target-progress)>.0001||Boolean(renderer&&!lost&&!paused&&!reduced.matches&&progress<.45);
     host.dataset.renderState=moving?'running':'idle';if(moving&&!frame)frame=requestAnimationFrame(draw);
   }
   function wake(){if(!frame&&active&&!document.hidden&&!destroyed){last=performance.now();frame=requestAnimationFrame(draw);}}
@@ -135,5 +136,5 @@ export function createJourneyScene(host,getProgress){
     const geometries=new Set(),materials=new Set();scene?.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[])materials.add(m);});
     geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());renderer?.dispose();
   });
-  return{wake,resize,setMode(value){if(mode!==value)progress=getProgress();mode=value;host.dataset.scene=['mechanical','information','paper'][mode];wake();},setPaused(value){paused=value;wake();},isReduced:()=>reduced.matches};
+  return{wake,resize,getProgress:()=>progress,setMode(value){if(mode!==value)progress=getProgress();mode=value;host.dataset.scene=['mechanical','information','paper'][mode];wake();},setPaused(value){paused=value;wake();},isReduced:()=>reduced.matches};
 }
