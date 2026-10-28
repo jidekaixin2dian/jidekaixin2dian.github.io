@@ -13,7 +13,7 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "优化有没有用，让这台电脑的实测结果回答。",
     "problem": "系统设置、驱动画质和游戏准备散落在不同入口。改了什么、是否有效、怎样恢复，都需要清楚的记录。",
     "approach": "GUI 与 CLI 共用调校引擎，逐项解释状态、权限和副作用。写入受支持的设置前保存原值，再用同机 A/B 与性能会话判断是否保留。",
-    "result": "v0.3.0 将系统调校、按游戏限帧、DLSS 与显示配置、开局准备和统一恢复接到同一工作台，提供原生深浅主题与自包含安装版。",
+    "result": "图中为 v0.3.0 工作台：系统调校、按游戏限帧、DLSS 与显示配置、开局准备和统一恢复集中在一个入口。当前版本与更新内容见发行页。",
     "boundary": "不承诺固定帧率收益。真实 FPS 需要官方 PresentMon；ICC 效果取决于应用支持。缓存清理不能还原。",
     "links": [
       [
@@ -21,8 +21,8 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/jidekaixin2dian/fps-tune#readme"
       ],
       [
-        "v0.3.0 下载",
-        "https://github.com/jidekaixin2dian/fps-tune/releases/tag/v0.3.0"
+        "下载当前稳定版",
+        "https://github.com/jidekaixin2dian/fps-tune/releases/latest"
       ],
       [
         "调校目录",
@@ -32,8 +32,8 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "context",
-    "name": "上下文预算",
-    "repo": "dsh-context-budget",
+    "name": "Toolgate · 工具闸门",
+    "repo": "dsh-toolgate",
     "role": "原创插件",
     "category": "agent",
     "tags": "DSH / MCP / JavaScript",
@@ -41,27 +41,27 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "工具可以很多，这一轮只带需要的。",
     "problem": "MCP 服务器越装越多，每个工具的完整 schema 都会进入请求。还没开始对话，上下文已被工具说明占去一部分。",
     "approach": "把配置与暴露分开：按服务器分组，在 prompt 组装前隐藏不需要的工具 schema；MCP 进程继续运行，组可以随时恢复。",
-    "result": "设置页提供全局预算、MCP 服务器增删启停与 Skill 管理；模型可通过 context_budget 工具设置当前会话的预算。预算调整无需重启。",
+    "result": "设置页提供全局预算、MCP 服务器增删启停与 Skill 管理；模型可通过 toolgate 工具设置当前会话的预算。预算调整无需重启。",
     "boundary": "token 数是 schema 与 Skill 描述的估算，不是模型分词器的精确值。部分在 Agent 作用域动态注册的 MCP 工具不能由该插件隐藏。独立社区插件，不代表 DeepSeek 官方产品。",
     "links": [
       [
         "项目文档",
-        "https://github.com/jidekaixin2dian/dsh-context-budget#readme"
+        "https://github.com/jidekaixin2dian/dsh-toolgate#readme"
       ],
       [
-        "v0.1.1 发行版",
-        "https://github.com/jidekaixin2dian/dsh-context-budget/releases/tag/v0.1.1"
+        "当前发行版",
+        "https://github.com/jidekaixin2dian/dsh-toolgate/releases/latest"
       ],
       [
-        "实现源码",
-        "https://github.com/jidekaixin2dian/dsh-context-budget/blob/main/lib/index.js"
+        "开发与验证",
+        "https://github.com/jidekaixin2dian/dsh-toolgate/blob/main/docs/development.md"
       ]
     ],
     "visual": "context"
   },
   {
     "id": "team",
-    "name": "团队插话助手",
+    "name": "Team Flow · 团队插话助手",
     "repo": "dsh-team-flow",
     "role": "原创插件 · Alpha",
     "category": "agent",
@@ -70,7 +70,7 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "你说下一步，团队继续做。",
     "problem": "Agent Teams 的主代理停在 wait_agent 中时，新消息可能要等队友变化或等待超时后才能被下一步领取。",
     "approach": "复用宿主当版的官方 Team 工具，识别同一 Lead 的 user Steer，仅结束本次等待，再由原生 AgentLoop 领取原消息；不取消队友，也不重发消息。",
-    "result": "插件以 v0.2.0-alpha.5 公开预览，提供安装包、兼容性 CI 与可复现记录。DSH 0.2.1-rc.2 的 18 项隔离功能检查已通过。",
+    "result": "以 Alpha 预览版提供安装包、兼容性 CI 与验证记录。持续验证多个 DSH 版本，包括 0.2.1-rc.4；各版本的检查范围见验证矩阵。",
     "boundary": "Alpha 预览。验证使用 Mock 推理与真实本地 Node PTC，不代表真实模型延迟或完整 Desktop UI 验收。SSH、Python PTC 与任意第三方插件组合未验证。基于 DeepSeek Harness 官方 Agent Teams，独立社区实现，非上游已合入修复。",
     "links": [
       [
@@ -79,11 +79,11 @@ window.PORTFOLIO_PROJECTS = [
       ],
       [
         "Alpha 发行版",
-        "https://github.com/jidekaixin2dian/dsh-team-flow/releases/tag/v0.2.0-alpha.5"
+        "https://github.com/jidekaixin2dian/dsh-team-flow/releases"
       ],
       [
-        "兼容验证",
-        "https://github.com/jidekaixin2dian/dsh-team-flow/blob/main/docs/compatibility-0.2.1-rc.2.md"
+        "验证矩阵",
+        "https://github.com/jidekaixin2dian/dsh-team-flow/blob/main/docs/verification.md"
       ],
       [
         "官方 Agent Teams",
@@ -91,6 +91,34 @@ window.PORTFOLIO_PROJECTS = [
       ]
     ],
     "visual": "team"
+  },
+  {
+    "id": "files",
+    "name": "File Actions · 文件与链接操作",
+    "repo": "dsh-file-actions",
+    "role": "原创插件",
+    "category": "interface",
+    "tags": "DSH / JavaScript / 文件操作",
+    "description": "从聊天里的文件引用，直接打开、预览、定位或另存。文件和链接的常用操作，放进右键菜单。",
+    "subtitle": "看到文件，就能接着处理。",
+    "problem": "Agent 给出文件后，复制路径、找应用、定位文件夹往往还要切换窗口。不同位置的引用也缺少统一操作入口。",
+    "approach": "为聊天引用、交付卡片、工具结果和提供路径的侧栏接入右键菜单，沿用宿主的文件接口与路径授权。",
+    "result": "支持默认应用打开、选择打开方式、定位、复制路径与引用、预览和另存，也提供键盘菜单操作。",
+    "boundary": "用于 DSH 图形与 Web 界面。应用列表取决于系统关联；文件访问遵守宿主授权，HTML / SVG 默认静态预览并阻止脚本和外部资源。",
+    "links": [
+      [
+        "项目文档",
+        "https://github.com/jidekaixin2dian/dsh-file-actions#readme"
+      ],
+      [
+        "当前发行版",
+        "https://github.com/jidekaixin2dian/dsh-file-actions/releases/latest"
+      ],
+      [
+        "开发与验证",
+        "https://github.com/jidekaixin2dian/dsh-file-actions/blob/main/docs/development.md"
+      ]
+    ]
   },
   {
     "id": "desk",
@@ -131,7 +159,7 @@ window.PORTFOLIO_PROJECTS = [
     "problem": "长任务换到新对话，往往要重讲背景。旧文档中的版本、已完成事项与计划又可能已经过期。",
     "approach": "先核实真实工作区，再把当前状态、下一步、关键约束和证据入口整理到轻量交接入口。原始证据保留，细节按需读取。",
     "result": "不需要额外服务，通过纯指令 skill 让下一位 Agent 或同事更快找到可靠起点。",
-    "boundary": "检查通过与人工接受分别记录。项目公开检查记录中尚未包含跨模型评测或 token 节省测量。",
+    "boundary": "纯指令 Skill。交接时区分已验证结果、历史计划与待决定事项；不因整理交接而扩大清理或发布范围。",
     "links": [
       [
         "技能源码",
@@ -142,8 +170,8 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/jidekaixin2dian/handoff/blob/main/docs/example.md"
       ],
       [
-        "检查记录",
-        "https://github.com/jidekaixin2dian/handoff/blob/main/docs/validation.md"
+        "使用说明",
+        "https://github.com/jidekaixin2dian/handoff#readme"
       ]
     ]
   },
