@@ -26,6 +26,10 @@ for (const project of projects) {
     await localAsset(project.image.replace('.png', '-2x.webp'), project.id);
   }
   urls.add(`https://github.com/jidekaixin2dian/${project.repo}`);
+  if (project.release) {
+    urls.add(`https://github.com/jidekaixin2dian/${project.repo}/releases/tag/v${project.release.version}`);
+    if (!project.release.summary) errors.push(`${project.id}: missing release summary`);
+  }
   for (const [label, link] of project.links) {
     try {
       const url = new URL(link);
@@ -34,6 +38,15 @@ for (const project of projects) {
       urls.add(url.href);
     } catch { errors.push(`${project.id}: invalid link ${link}`); }
   }
+}
+vm.runInNewContext(await readFile(path.join(root, 'activity.js'), 'utf8'), context);
+const contributions = context.window.PORTFOLIO_ACTIVITY.prs;
+const recordedPRs = new Map();
+for (const pr of contributions) {
+  const url = `https://github.com/${pr.repo}/pull/${pr.number}`;
+  if (recordedPRs.has(url) || !pr.title || !['merged','open','closed'].includes(pr.status)) errors.push(`Invalid PR record: ${url}`);
+  recordedPRs.set(url, pr.status);
+  urls.add(url);
 }
 for (const file of ['index.html', 'studio.html', 'journey.html']) {
   const source = await readFile(path.join(root, file), 'utf8');
@@ -67,6 +80,11 @@ if (process.argv.includes('--online')) {
       try {
         const response = await fetch(endpoint || url, { headers, signal: AbortSignal.timeout(20000) });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (recordedPRs.has(url)) {
+          const pr = await response.json();
+          const state = pr.merged_at ? 'merged' : pr.state;
+          if (state !== recordedPRs.get(url)) throw new Error(`PR status changed to ${state}`);
+        }
         if (endpoint?.includes('releases?') && !(await response.json()).length) throw new Error('No published releases');
         failure = null;
         break;
@@ -79,5 +97,5 @@ if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Checked ${projects.length} projects, local page resources and ${urls.size} external URLs${process.argv.includes('--online') ? ' (online)' : ' (syntax only; use --online to check destinations)'}.`);
+  console.log(`Checked ${projects.length} projects, ${contributions.length} upstream PRs, local page resources and ${urls.size} external URLs${process.argv.includes('--online') ? ' (online)' : ' (syntax only; use --online to check destinations)'}.`);
 }

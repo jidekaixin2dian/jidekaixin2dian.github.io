@@ -1,71 +1,77 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="blueprint" data-type="software">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f3f4ed">
-  <title>记得开心一点 · 把想法做成有用的东西</title>
-  <meta name="description" content="记得开心一点的个人作品实验室。探索帧律、PiWeb Desk、handoff、Windows 工具与 AI Agent 工作流，以及开源界面贡献。">
+  <meta name="theme-color" content="#193eb8">
+  <meta name="page-type" content="software"><meta name="site-kind" content="software">
+  <title>记得开心一点 · 开源作品集</title>
+  <meta name="description" content="记得开心一点的个人作品集。翻看 FPS 帧律、DSH 插件和 Windows 工具的真实界面，也可以跟着《出去一下》走走上海。">
   <link rel="canonical" href="https://jidekaixin2dian.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="记得开心一点 · 把想法做成有用的东西">
-  <meta property="og:description" content="从一个想法，到真的用得上的工具。Windows 软件、AI 工作流与开源作品。">
-  <meta property="og:url" content="https://jidekaixin2dian.github.io/">
-  <meta property="og:image" content="https://jidekaixin2dian.github.io/share-cover.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://jidekaixin2dian.github.io/share-cover.png">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23c8f663'/%3E%3Ctext x='8' y='45' font-family='Arial,sans-serif' font-size='39' font-weight='700' fill='%23111311'%3Ejk.%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website"><meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="记得开心一点 · 开源作品集"><meta property="og:description" content="Windows 工具、AI 工作流，还有一份给上海散步者的短途路线手记。">
+  <meta property="og:url" content="https://jidekaixin2dian.github.io/"><meta property="og:image" content="https://jidekaixin2dian.github.io/share-cover.png">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://jidekaixin2dian.github.io/share-cover.png">
+  <link rel="icon" href="./mark.svg">
   <script src="./theme.js"></script>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./experience.css">
-  <link rel="stylesheet" href="./themes.css">
   <link rel="preload" href="./fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./fonts/jk-text.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./typography.css">
-  <link rel="stylesheet" href="./showcase.css">
-  <link rel="stylesheet" href="./blueprint.css">
-  <link rel="stylesheet" href="./image-viewer.css">
-  <script src="./projects.js" defer></script>
-  <script src="./image-viewer.js" defer></script>
-  <script src="./site.js" defer></script>
-  <script src="./morph.js" type="module"></script>
+  <link rel="stylesheet" href="./portfolio.css"><link rel="stylesheet" href="./image-viewer.css">
+  <script src="./projects.js" defer></script><script src="./activity.js" defer></script><script src="./activity-view.js" defer></script><script src="./image-viewer.js" defer></script>
+  <script src="./site.js" defer></script><script src="./plate.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#work">跳到项目</a>
-  <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="记得开心一点，返回首页"><span class="mark" aria-hidden="true">jk<span class="brand-dot">.</span></span><span>记得开心一点</span></a>
-    <nav aria-label="主导航"><a href="#work">项目</a><a href="#abilities">能力</a><a href="#about">关于</a></nav>
-    <div class="header-actions"><div class="theme-picker"><button id="theme-toggle" class="theme-toggle" aria-label="选择网站主题" aria-expanded="false" aria-controls="theme-menu"><span class="theme-swatch" aria-hidden="true"></span><span id="theme-label">亮色</span><span class="theme-chevron" aria-hidden="true"></span></button><div id="theme-menu" class="theme-menu" role="group" aria-label="网站主题" hidden><div class="theme-menu-heading"><span>外观</span><span>雕塑版</span></div><div class="theme-options"><button data-theme-choice="light" aria-pressed="true"><span class="theme-chip chip-light" aria-hidden="true"></span><span>亮色</span></button><button data-theme-choice="dark" aria-pressed="false"><span class="theme-chip chip-dark" aria-hidden="true"></span><span>暗色</span></button><button data-theme-choice="blueprint" aria-pressed="false"><span class="theme-chip chip-blueprint" aria-hidden="true"></span><span>蓝图</span></button></div><a class="journey-entry" href="./journey.html">让想法，成为工具 <span aria-hidden="true">↗</span></a><a class="style-switch" href="./studio.html"><span class="style-switch-copy"><strong>实作档案</strong><span>切换全新风格</span></span><span class="style-switch-arrow" aria-hidden="true">↗</span></a></div></div><a class="github-link" href="https://github.com/jidekaixin2dian" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-  </header>
+  <a class="skip-link" href="#work">跳到作品目录</a>
+  <header class="mast" id="home"><div class="wrap mast-inner">
+    <a class="brand" href="#home"><b aria-hidden="true">jk.</b><span>记得开心一点</span></a>
+    <nav aria-label="主导航"><a href="#work">作品</a><a href="#contributions">开源贡献</a><a href="#abilities">方法</a><a href="#about">关于</a></nav>
+    <div class="editions" role="group" aria-label="网站风格">
+      <button data-theme-choice="blueprint" aria-pressed="true"><i></i>钴蓝图纸</button>
+      <button data-theme-choice="fieldnotes" aria-pressed="false"><i></i>城市手记</button>
+    </div>
+  </div></header>
   <main>
-    <section class="scroll-story" id="home" aria-labelledby="hero-title">
-      <div class="story-stage">
-        <div class="scene-headline"><h1 id="hero-title" aria-label="MAKE IT REAL.">MAKE<br><span class="hero-outline" aria-hidden="true"><span class="hero-outline-source">IT REAL.</span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="0" dominant-baseline="text-before-edge">IT REAL.</text></svg></span></h1></div>
-        <div id="sculpture" class="sculpture" role="img" aria-label="随页面滚动变化的巨大三维雕塑：流体球体、环形结构、连接结与重新聚合的方体。"><canvas id="sculpture-fallback" aria-hidden="true"></canvas></div>
-        <div class="scene-topline"><span>想法，正在成形。</span><span>WINDOWS / AI / OPEN SOURCE</span></div>
-        <div class="blueprint-caption" aria-hidden="true"><span>IDEA → SYSTEM → REALITY</span><span>把好奇心，画成可用的结构。</span></div>
-        <div class="realization" aria-hidden="true"><div class="realization-screen"><img src="./fps-v030-overview.webp" alt="" width="2040" height="1290" decoding="async"></div><div class="realization-caption"><span>FPS 帧律</span><span>一个想法，已经可以用了。</span></div></div>
-        <div class="story-copy"><h2 id="story-title">把想法<br>做成有用的东西。</h2><p id="story-description">我是「记得开心一点」。<br>保持好奇，也把事情做完。</p><a class="story-link" href="./journey.html">让雕塑，成为工具 ↗</a><a class="story-link direct-work" href="#work">直接看作品</a></div>
-        <div class="story-aside"><span id="shape-label">LIQUID IDEA</span><button id="motion-toggle" aria-pressed="false">暂停自转</button></div>
-        <div class="story-navigation" aria-label="探索雕塑的四个阶段"><button data-phase="0" class="active" aria-label="聚合" aria-pressed="true"><span class="phase-number" aria-hidden="true">01</span><span>聚合</span></button><button data-phase="1" aria-label="成形" aria-pressed="false"><span class="phase-number" aria-hidden="true">02</span><span>成形</span></button><button data-phase="2" aria-label="连接" aria-pressed="false"><span class="phase-number" aria-hidden="true">03</span><span>连接</span></button><button data-phase="3" aria-label="落地" aria-pressed="false"><span class="phase-number" aria-hidden="true">04</span><span>落地</span></button></div>
-        <div class="story-progress" aria-hidden="true"><div id="story-progress-fill"></div></div>
+    <section class="hero" aria-labelledby="hero-title" data-enter>
+      <div class="wrap">
+        <div class="folio-line"><span><i></i> JIDEKAIXIN2DIAN / PORTFOLIO</span><span>2026</span></div>
+        <div class="hero-spread">
+          <div class="hero-copy">
+            <h1 id="hero-title"><span class="blue-only" lang="en">Open<br> Works<span class="stop">.</span></span><span class="field-only" lang="en">Field<br> <em>Notes.</em></span></h1>
+            <p class="hero-sub blue-only">记得开心一点的开源作品集</p>
+            <p class="hero-sub field-only">记得开心一点的城市手记</p>
+            <p class="deck blue-only">从游戏掉帧到 Agent 等待时的一次插话，<br>我把自己遇到的问题，做成日常用得上的工具。</p>
+            <p class="deck field-only">有时做工具，有时出门走走。<br>《出去一下》收录了从上海出发的短途散步路线。</p>
+            <div class="hero-actions"><a href="#work" class="cta blue-only">浏览作品 <span>↓</span></a><a href="./go/" class="cta field-only">打开《出去一下》 <span>↗</span></a><a href="#work" class="quiet field-only">浏览作品 ↓</a><a href="#contributions" class="quiet blue-only">上游贡献 ↓</a></div>
+          </div>
+          <div class="plate blue-only">
+            <div class="plate-top"><span>FIG. <b id="plate-number">01</b> / FORM STUDY</span><span>可交互图纸</span></div>
+            <div class="drawing"><div class="register" aria-hidden="true"></div><img class="still" src="./images/trefoil.webp" alt="" width="960" height="560"><canvas id="plate-canvas" tabindex="0" role="img" aria-label="三叶结三维线稿，使用方向键旋转"></canvas></div>
+            <div class="plate-foot"><div><strong id="plate-name">Trefoil</strong><small>拖动或使用方向键旋转</small></div><div class="shape-controls" role="group" aria-label="选择图形"><button data-shape="0" aria-pressed="true">三叶结</button><button data-shape="1" aria-pressed="false">圆环</button></div></div>
+          </div>
+          <div class="photograph field-only">
+            <div class="photo-frame"><img src="./go/assets/qibao-Bn3R9dI2.webp" alt="上海七宝老镇街巷，摄于 2013 年" width="1000" height="750"></div>
+            <div class="photo-line"><span>上海 · 七宝老镇</span><a href="./go/">翻开路线 ↗</a></div>
+          </div>
+        </div>
+        <div class="hero-foot"><span class="blue-only">WINDOWS TOOLS　 /　 AGENT WORKFLOWS</span><span class="field-only">SHANGHAI　 /　 WALKING NOTES</span><a href="#work">作品目录 ↓</a></div>
       </div>
     </section>
-    <section class="work shell" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><p class="eyebrow">SELECTED WORK</p><h2 id="work-title">从「能不能」<br>到「用得上」。</h2></div>
-      <div class="filter-group" aria-label="按领域筛选项目"><button class="filter active" data-filter="all" aria-pressed="true">全部作品</button><button class="filter" data-filter="windows" aria-pressed="false">Windows 工具</button><button class="filter" data-filter="agent" aria-pressed="false">AI 工作流</button><button class="filter" data-filter="interface" aria-pressed="false">界面与体验</button></div>
-      <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
-      <div id="featured-projects" class="featured-projects"></div>
-      <h3 class="collection-heading" id="collection-heading">更多作品与开源实践</h3>
-      <div id="projects" class="project-grid"></div>
+    <section class="activity wrap" id="contributions" aria-labelledby="activity-title">
+      <div class="section-heading"><div><span class="kicker">CHANGELOG</span><h2 id="activity-title">近期进展<span>.</span></h2></div><p>核对至 <time datetime="2026-11-18">2026 年 11 月 18 日</time></p></div>
+      <div class="activity-columns"><div><h3>项目更新</h3><div id="release-list"></div></div>
+      <div><h3>上游开源贡献</h3><p id="pr-count"></p><div id="pr-highlights"></div><details id="pr-archive"><summary>完整 PR 记录</summary><div id="pr-list"></div></details></div></div>
+    </section>
+    <section class="work wrap" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><div><span class="kicker">SELECTED WORK</span><h2 id="work-title">作品目录<span>.</span></h2></div><p>工具、插件和开源贡献</p></div>
+      <div class="filter-bar"><div class="filter-group" role="group" aria-label="按领域筛选项目"><button class="filter active" data-filter="all" aria-pressed="true">全部作品</button><button class="filter" data-filter="windows" aria-pressed="false">Windows 工具</button><button class="filter" data-filter="agent" aria-pressed="false">AI 工作流</button><button class="filter" data-filter="interface" aria-pressed="false">界面与体验</button></div><p id="result-count" role="status"></p></div>
+      <div id="featured-projects"></div><h3 id="collection-heading">更多作品与开源实践</h3><div id="projects" class="project-grid"></div>
+      <noscript><p>可以直接在 <a href="https://github.com/jidekaixin2dian">GitHub</a> 浏览项目与发行记录。</p></noscript>
     </section>
     <div id="extended-content"></div>
   </main>
-  <footer class="shell"><a class="footer-brand" href="#home">记得开心一点。</a><span>KEEP CURIOUS. KEEP BUILDING.</span><span>© 2026 jidekaixin2dian</span></footer>
-  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono">PROJECT NOTES</span><div class="dialog-tools"><button id="share-project" class="text-button">复制作品链接</button><button id="dialog-close" class="close-button" aria-label="关闭项目详情">关闭 ×</button></div></div><div id="dialog-content"></div></dialog>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-</body>
-</html>
+  <footer class="wrap"><div class="footer-links"><a class="brand" href="#home"><b>jk.</b>记得开心一点</a><a href="./studio.html">实作档案 ↗</a><a href="./journey.html">交互展厅 ↗</a><a href="./go/">出去一下 ↗</a><a href="https://github.com/jidekaixin2dian">GitHub ↗</a></div>
+    <p class="field-only credits">七宝照片 © Fabio Achilli，2013 · <a href="https://commons.wikimedia.org/wiki/File:Qibao_Old_Town,_Shanghai,_China_(9740731704).jpg">原图</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
+  </footer>
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="kicker">PROJECT NOTES</span><div><button id="share-project">复制作品链接</button><button id="dialog-close" aria-label="关闭项目详情">关闭 ×</button></div></div><div id="dialog-content"></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body></html>

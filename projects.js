@@ -8,17 +8,21 @@ window.PORTFOLIO_PROJECTS = [
     "category": "windows",
     "tags": "C# / WPF / .NET 10",
     "description": "把系统调校变成有依据的选择。从检测、审阅到实测与还原，开局前一次准备好。",
-    "image": "fps-v030-overview.webp",
-    "imageAlt": "FPS 帧律 v0.3.0 的真实工作台界面，展示开局准备、硬件状态与待审阅的系统调校项目。",
-    "subtitle": "优化有没有用，让这台电脑的实测结果回答。",
+    "image": "images/01-overview.webp",
+    "imageAlt": "FPS 帧律项目文档中的工作台界面",
+    "subtitle": "这项调校值不值得留，用同一台电脑做一次 A/B 对照。",
     "problem": "系统设置、驱动画质和游戏准备散落在不同入口。改了什么、是否有效、怎样恢复，都需要清楚的记录。",
     "approach": "GUI 与 CLI 共用调校引擎，逐项解释状态、权限和副作用。写入受支持的设置前保存原值，再用同机 A/B 与性能会话判断是否保留。",
-    "result": "图中为 v0.3.0 工作台：系统调校、按游戏限帧、DLSS 与显示配置、开局准备和统一恢复集中在一个入口。当前版本与更新内容见发行页。",
+    "result": "v0.5.0 新增前后对照、收益档案与卡顿取证。v0.6.0 细分帧采样失败原因，将 A/B 高级入口移到「优化 → 对照一下」旁，设置保存失败时恢复真实状态。",
     "boundary": "不承诺固定帧率收益。真实 FPS 需要官方 PresentMon；ICC 效果取决于应用支持。缓存清理不能还原。",
     "links": [
       [
         "项目文档",
         "https://github.com/jidekaixin2dian/fps-tune#readme"
+      ],
+      [
+        "前后对照与收益档案 · v0.5.0",
+        "https://github.com/jidekaixin2dian/fps-tune/releases/tag/v0.5.0"
       ],
       [
         "下载当前稳定版",
@@ -27,8 +31,17 @@ window.PORTFOLIO_PROJECTS = [
       [
         "调校目录",
         "https://github.com/jidekaixin2dian/fps-tune/blob/main/catalog/catalog.json"
+      ],
+      [
+        "截图来源 · v0.6.0 文档",
+        "https://github.com/jidekaixin2dian/fps-tune/tree/v0.6.0/assets/screenshots"
       ]
-    ]
+    ],
+    "release": {
+      "version": "0.6.0",
+      "summary": "帧采样失败时区分权限不足、图形事件丢失和目标未渲染。",
+      "date": "2026-11-18"
+    }
   },
   {
     "id": "context",
@@ -41,12 +54,20 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "工具可以很多，这一轮只带需要的。",
     "problem": "MCP 服务器越装越多，每个工具的完整 schema 都会进入请求。还没开始对话，上下文已被工具说明占去一部分。",
     "approach": "把配置与暴露分开：按服务器分组，在 prompt 组装前隐藏不需要的工具 schema；MCP 进程继续运行，组可以随时恢复。",
-    "result": "设置页提供全局预算、MCP 服务器增删启停与 Skill 管理；模型可通过 toolgate 工具设置当前会话的预算。预算调整无需重启。",
+    "result": "v0.2.2 让设置页和模型工具共用分组、逐工具开关、预设和规则。设置保存成功后才生效，写入失败会保留原配置。",
     "boundary": "token 数是 schema 与 Skill 描述的估算，不是模型分词器的精确值。部分在 Agent 作用域动态注册的 MCP 工具不能由该插件隐藏。独立社区插件，不代表 DeepSeek 官方产品。",
     "links": [
       [
         "项目文档",
         "https://github.com/jidekaixin2dian/dsh-toolgate#readme"
+      ],
+      [
+        "Desktop 市场与 Web CLI 安装说明 · #19",
+        "https://github.com/jidekaixin2dian/dsh-toolgate/pull/19"
+      ],
+      [
+        "设置保存与共享操作 · #18",
+        "https://github.com/jidekaixin2dian/dsh-toolgate/pull/18"
       ],
       [
         "当前发行版",
@@ -57,7 +78,12 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/jidekaixin2dian/dsh-toolgate/blob/main/docs/development.md"
       ]
     ],
-    "visual": "context"
+    "visual": "context",
+    "release": {
+      "version": "0.2.2",
+      "summary": "工具分组、逐项开关和预设共用同一套操作，保存成功后才生效。",
+      "date": "2026-11-17"
+    }
   },
   {
     "id": "team",
@@ -70,12 +96,16 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "你说下一步，团队继续做。",
     "problem": "Agent Teams 的主代理停在 wait_agent 中时，新消息可能要等队友变化或等待超时后才能被下一步领取。",
     "approach": "复用宿主当版的官方 Team 工具，识别同一 Lead 的 user Steer，仅结束本次等待，再由原生 AgentLoop 领取原消息；不取消队友，也不重发消息。",
-    "result": "以 Alpha 预览版提供安装包、兼容性 CI 与验证记录。持续验证多个 DSH 版本，包括 0.2.1-rc.4；各版本的检查范围见验证矩阵。",
+    "result": "v0.2.1 在 DSH 0.2.2-rc.1 上处理了一个时序问题。主代理收到插话时，尚未启动的前台 workflow 会稍后再跑，已运行的工作流与队友继续工作。",
     "boundary": "Alpha 预览。验证使用 Mock 推理与真实本地 Node PTC，不代表真实模型延迟或完整 Desktop UI 验收。SSH、Python PTC 与任意第三方插件组合未验证。基于 DeepSeek Harness 官方 Agent Teams，独立社区实现，非上游已合入修复。",
     "links": [
       [
         "项目文档",
         "https://github.com/jidekaixin2dian/dsh-team-flow#readme"
+      ],
+      [
+        "发布后的 Steer 文档与 CI 更新 · #17",
+        "https://github.com/jidekaixin2dian/dsh-team-flow/pull/17"
       ],
       [
         "Alpha 发行版",
@@ -90,7 +120,12 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/deepseek-ai/deepseek-harness"
       ]
     ],
-    "visual": "team"
+    "visual": "team",
+    "release": {
+      "version": "0.2.1",
+      "summary": "主代理收到插话时，让尚未启动的前台工作流稍后再跑。",
+      "date": "2026-11-10"
+    }
   },
   {
     "id": "files",
@@ -103,12 +138,16 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "看到文件，就能接着处理。",
     "problem": "Agent 给出文件后，复制路径、找应用、定位文件夹往往还要切换窗口。不同位置的引用也缺少统一操作入口。",
     "approach": "为聊天引用、交付卡片、工具结果和提供路径的侧栏接入右键菜单，沿用宿主的文件接口与路径授权。",
-    "result": "支持默认应用打开、选择打开方式、定位、复制路径与引用、预览和另存，也提供键盘菜单操作。",
+    "result": "支持打开、定位、预览、另存与键盘菜单。v0.1.23 让每个菜单独立处理取消，连续打开两个菜单时，关闭前一个不会打断后一个。",
     "boundary": "用于 DSH 图形与 Web 界面。应用列表取决于系统关联；文件访问遵守宿主授权，HTML / SVG 默认静态预览并阻止脚本和外部资源。",
     "links": [
       [
         "项目文档",
         "https://github.com/jidekaixin2dian/dsh-file-actions#readme"
+      ],
+      [
+        "菜单取消与缓存生命周期 · #26",
+        "https://github.com/jidekaixin2dian/dsh-file-actions/pull/26"
       ],
       [
         "当前发行版",
@@ -117,6 +156,59 @@ window.PORTFOLIO_PROJECTS = [
       [
         "开发与验证",
         "https://github.com/jidekaixin2dian/dsh-file-actions/blob/main/docs/development.md"
+      ]
+    ],
+    "release": {
+      "version": "0.1.23",
+      "summary": "连续打开两个右键菜单时，取消前一个不会再打断后一个。",
+      "date": "2026-11-17"
+    }
+  },
+  {
+    "id": "desktop",
+    "name": "DSH Windows MCP",
+    "repo": "dsh-windows-mcp",
+    "role": "上游贡献 · 已合入",
+    "category": "agent",
+    "tags": "DSH / Windows / MCP",
+    "description": "给桌面控制开关划清会话边界，关闭时也从工具列表移除对应能力。",
+    "subtitle": "给这一场对话开的桌面控制，只在这一场生效。",
+    "problem": "一个宿主里可以同时跑多个会话。旧开关会影响其他窗口，关掉后请求里仍带着不可用工具。",
+    "approach": "先把开关接到实际工具列表，再将授权改为按会话管理，并提供新会话默认值。",
+    "result": "上游已合入 #5 和 #13，分别修复工具可见性与跨会话干扰。",
+    "boundary": "这里记录我提交给社区项目的两项修改。",
+    "links": [
+      [
+        "会话范围 · #13",
+        "https://github.com/helloHub1212/dsh-windows-mcp/pull/13"
+      ],
+      [
+        "工具列表 · #5",
+        "https://github.com/helloHub1212/dsh-windows-mcp/pull/5"
+      ]
+    ]
+  },
+  {
+    "id": "walk",
+    "name": "出去一下 · 上海",
+    "repo": "jidekaixin2dian.github.io",
+    "category": "interface",
+    "role": "个人项目",
+    "tags": "Web / PWA / 上海",
+    "description": "从上海二工大附近出发，按时间和预算挑一条短途路线。",
+    "subtitle": "有半天时间，在上海可以去哪里走走？",
+    "problem": "想临时出门时，查路线、算往返时间和预算往往比做决定更费劲。",
+    "approach": "把出发点、可用时间和预算放进一次选择，用地点实景帮助辨认路线。",
+    "result": "可以从浏览器打开，也提供单文件离线版，出门前就能把路线留在手边。",
+    "boundary": "行前请核对当日交通、营业时间和天气。",
+    "links": [
+      [
+        "打开《出去一下》",
+        "https://jidekaixin2dian.github.io/go/"
+      ],
+      [
+        "打开离线版",
+        "https://jidekaixin2dian.github.io/go/出去一下-离线版.html"
       ]
     ]
   },
@@ -133,9 +225,13 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "任务在跑，人不用一直盯着窗口。",
     "problem": "浏览器里的 AI 编码会话容易被窗口淹没。任务完成了没有、今天花了多少、怎样快速回到项目，都需要更直接的入口。",
     "approach": "围绕 pi-web 构建 Windows 桌面外壳。监听会话结束状态、汇总 token 成本，提供系统托盘、全局热键和文件夹右键入口。",
-    "result": "自包含运行时让目标机器无需另装 Node.js。任务完成时提供通知，费用汇总在托盘里可见，Ctrl+Alt+P 可以呼出或隐藏窗口。",
+    "result": "公开主分支已将包版本更新到 1.2.0。可按提供商拉取模型列表、比较差异、备份后合并到 models.json，也可检查并更新内核。托盘通知与 Ctrl+Alt+P 快捷入口仍可使用。",
     "boundary": "这是基于 agegr/pi-web 的第三方桌面外壳；AI 编码内核与 Web UI 来自上游项目。",
     "links": [
+      [
+        "主分支 · 模型列表差异与备份",
+        "https://github.com/jidekaixin2dian/piweb-desk/commit/a9d5b5a3e7b6de0f068a9e4fffcdb689a7faba4c"
+      ],
       [
         "项目文档",
         "https://github.com/jidekaixin2dian/piweb-desk#readme"
@@ -158,9 +254,13 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "上下文会换，项目的线索要留下。",
     "problem": "长任务换到新对话，往往要重讲背景。旧文档中的版本、已完成事项与计划又可能已经过期。",
     "approach": "先核实真实工作区，再把当前状态、下一步、关键约束和证据入口整理到轻量交接入口。原始证据保留，细节按需读取。",
-    "result": "不需要额外服务，通过纯指令 skill 让下一位 Agent 或同事更快找到可靠起点。",
+    "result": "v0.2.0 可以识别换会话、换 Agent 等交接意图。先核对工作区，清理交接文档中的失效信息，再按长度、待办数量等条件决定是否拆出任务索引。",
     "boundary": "纯指令 Skill。交接时区分已验证结果、历史计划与待决定事项；不因整理交接而扩大清理或发布范围。",
     "links": [
+      [
+        "v0.2.0 发行记录",
+        "https://github.com/jidekaixin2dian/handoff/releases/tag/v0.2.0"
+      ],
       [
         "技能源码",
         "https://github.com/jidekaixin2dian/handoff/blob/main/skills/handoff/SKILL.md"
@@ -173,7 +273,12 @@ window.PORTFOLIO_PROJECTS = [
         "使用说明",
         "https://github.com/jidekaixin2dian/handoff#readme"
       ]
-    ]
+    ],
+    "release": {
+      "version": "0.2.0",
+      "summary": "换会话或换人接手时可触发交接，长交接按任务拆出索引。",
+      "date": "2026-11-03"
+    }
   },
   {
     "id": "storage",
@@ -187,7 +292,7 @@ window.PORTFOLIO_PROJECTS = [
     "subtitle": "空间从哪里来，清理之前先弄清楚。",
     "problem": "Windows 的编码、junction 和系统目录容易让磁盘报告失真。占得多，也不等于可以直接删除。",
     "approach": "基于 Khazix 的原始 skill 完成 Windows 特化：UTF-8、固定盘整机扫描、兼容链接覆盖诊断、服务状态提示与受边界约束的回收站删除。",
-    "result": "v1.3.0 增加 12 项只读系统空间探测，管理员只读分析可补充 DISM 等结果。交互报告将普通占用分诊与系统占用分开呈现。",
+    "result": "v1.5.0 按固定盘检查分页文件和回收站，并探测 WSL 数据盘。新增结果写入分析 JSON，供进一步核对磁盘占用。",
     "boundary": "原始设计、分诊体系与安全模型来自数字生命卡兹克（Khazix）。我的工作是 Windows 特化与维护。系统占用段没有删除按钮；目录尺寸与驱动未匹配数不能直接当成可回收量。",
     "links": [
       [
@@ -195,14 +300,19 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/jidekaixin2dian/storage-analyzer#readme"
       ],
       [
-        "v1.3.0 发行版",
-        "https://github.com/jidekaixin2dian/storage-analyzer/releases/tag/v1.3.0"
+        "v1.5.0 发行记录",
+        "https://github.com/jidekaixin2dian/storage-analyzer/releases/tag/v1.5.0"
       ],
       [
         "原始项目",
         "https://github.com/KKKKhazix/khazix-skills"
       ]
-    ]
+    ],
+    "release": {
+      "version": "1.5.0",
+      "summary": "逐盘检查分页文件与回收站，并在分析结果中列出 WSL 虚拟磁盘。",
+      "date": "2026-11-15"
+    }
   },
   {
     "id": "codex",
@@ -231,19 +341,27 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "id": "pi",
-    "name": "pi-web · 模型发现",
+    "name": "pi-web",
     "repo": "pi-web",
     "role": "开源贡献",
     "category": "agent",
     "tags": "Provider catalog / API",
     "compact": true,
-    "description": "让模型发现从 provider 目录解析端点。把配置、协议与实际请求接到一起。",
-    "subtitle": "减少配置里的猜测，让请求走对入口。",
-    "problem": "模型发现需要识别不同 provider 的 API 协议与端点，单一假设容易让某些 provider 请求走错路径。",
-    "approach": "从 pi 的 provider catalog 解析模型发现端点，使目录里的 provider 元信息参与请求构建。",
-    "result": "功能提交已通过上游 PR #1006 合入，改善模型配置流程中的发现行为。",
-    "boundary": "pi-web 是 agegr 维护的 Web UI；我的参与是模型发现功能贡献。",
+    "description": "改进模型发现端点和协议选择，修复拖选路径文字时目录窗口误关的问题。",
+    "subtitle": "从读取模型列表，到选对工作目录。",
+    "problem": "提供商的端点和协议各异；在目录选择器里拖选文字时，指针松在窗口外还会误关面板。",
+    "approach": "从 provider 目录读取端点和协议，并让路径选择器检查拖选从哪里开始。",
+    "result": "上游已合入 #1006、#1050 和 #1462，分别覆盖端点解析、协议保留和目录选择交互。",
+    "boundary": "pi-web 由 agegr 维护。我参与了模型发现、协议配置和目录选择器交互的改进。",
     "links": [
+      [
+        "目录选择器 · #1462",
+        "https://github.com/agegr/pi-web/pull/1462"
+      ],
+      [
+        "保留 API 协议 · #1050",
+        "https://github.com/agegr/pi-web/pull/1050"
+      ],
       [
         "已合入的 PR #1006",
         "https://github.com/agegr/pi-web/pull/1006"
@@ -258,17 +376,21 @@ window.PORTFOLIO_PROJECTS = [
     "id": "wallpaper",
     "name": "DSH Wallpaper Engine",
     "repo": "dsh-wallpaper-engine",
-    "role": "Fork / 改进提案",
+    "role": "上游贡献 · 已合入",
     "category": "interface",
-    "tags": "Wallpaper / Typography",
+    "tags": "Wallpaper / 场景渲染",
     "compact": true,
-    "description": "围绕壁纸界面与字体体验进行探索，提出让全界面文字跟随宿主字体选择的修复。",
-    "subtitle": "好用的工作台，也可以有自己的气质。",
-    "problem": "壁纸插件里的字族设置需要与宿主字体选择保持一致，避免界面局部使用不同字体。",
-    "approach": "在 Fork 中提出字体令牌修复，让插件字族读取宿主源头令牌，并提交到上游讨论。",
-    "result": "修复提案可在上游 PR #100 查看。当前为已关闭、未合入状态。",
-    "boundary": "壁纸插件由 elysia395 与社区维护。这个条目是改进提案，尚未合入上游。",
+    "description": "修复场景壁纸装载时的模糊占位和首帧超时后的空白画面。",
+    "subtitle": "场景还没渲染出来时，也能先看到清晰的壁纸。",
+    "problem": "场景壁纸放大全屏后，占位图会模糊。渲染器迟迟不返回首帧时，页面还可能一直空白。",
+    "approach": "全屏占位读取作者原图，壁纸库继续用缩略图。渲染超时后显示备用画面，切换场景时忽略旧请求。",
+    "result": "上游已合入 #347。较早的字体提案 #100 已关闭、未合入。",
+    "boundary": "壁纸引擎由 elysia395 与社区维护，我参与了加载与回退体验的修复。",
     "links": [
+      [
+        "场景壁纸首帧回退 · #347",
+        "https://github.com/elysia395/dsh-wallpaper-engine/pull/347"
+      ],
       [
         "修复提案 PR #100",
         "https://github.com/elysia395/dsh-wallpaper-engine/pull/100"
@@ -287,17 +409,21 @@ window.PORTFOLIO_PROJECTS = [
     "id": "sidebar",
     "name": "DSH Better Sidebar",
     "repo": "DSH-better-sidebar",
-    "role": "Fork / 架构研究",
+    "role": "上游提案 · 开放中",
     "category": "interface",
     "tags": "Plugins / Workbench",
     "compact": true,
-    "description": "探索把文件预览、终端和 Git 放进同一工作台的插件架构，研究 Agent 与界面的连接方式。",
-    "subtitle": "把散落的工具，放回同一个工作现场。",
-    "problem": "Agent 工作流经常需要在文件、终端、版本控制和会话之间来回切换。",
-    "approach": "跟进开放侧边栏底座与插件注册机制，研究文件预览、终端和工作台如何在同一界面协作。",
-    "result": "保留公开 Fork 作为研究入口，可继续查看框架与上游插件接入文档。",
-    "boundary": "工作台框架由 omdsh-dev 社区维护；我的参与以跟进与架构研究为主。",
+    "description": "提议让任务触发的侧栏在任务结束后自动收起，同时保留用户手动打开的面板。",
+    "subtitle": "任务结束，把对话区还给正在聊天的人。",
+    "problem": "子代理或后台任务会自动展开侧栏，结束后仍占用对话区。",
+    "approach": "提供默认关闭的选项。当前会话的相关任务全部结束并持续空闲三秒后，收回由任务自动打开的侧栏。",
+    "result": "已提交上游 PR #738。截至 2026-11-18，PR 仍开放。",
+    "boundary": "此处记录公开提案的行为，合入与发行进展见上游。",
     "links": [
+      [
+        "查看开放中的 #738",
+        "https://github.com/omdsh-dev/DSH-better-sidebar/pull/738"
+      ],
       [
         "研究分支",
         "https://github.com/jidekaixin2dian/DSH-better-sidebar"
