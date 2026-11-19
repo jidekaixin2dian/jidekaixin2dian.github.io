@@ -123,7 +123,7 @@ export function createJourneyScene(host,getProgress,onProgress=()=>{}){
   try{
     renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'default'});renderer.setPixelRatio(Math.min(devicePixelRatio||1,mobile.matches?1.6:2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;
     scene=new THREE.Scene();camera=new THREE.OrthographicCamera(-5,5,3,-3,.1,30);camera.position.z=10;
-    texture=new THREE.TextureLoader().load('./fps-v030-dark.webp',wake);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.push(texture);
+    texture=new THREE.TextureLoader().load('./images/fps-060-home.webp',wake);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.push(texture);
     fps=buildFps();context=buildContext();paper=buildPaper();scene.add(new THREE.AmbientLight(0xfff4df,2.1));const light=new THREE.DirectionalLight(0xffffff,2.5);light.position.set(-3,4,7);scene.add(light);
     host.append(renderer.domElement);host.dataset.renderer='webgl';
     renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;host.dataset.renderer='fallback';stop();});

@@ -8,8 +8,8 @@ window.PORTFOLIO_PROJECTS = [
     "category": "windows",
     "tags": "C# / WPF / .NET 10",
     "description": "把系统调校变成有依据的选择。从检测、审阅到实测与还原，开局前一次准备好。",
-    "image": "images/01-overview.webp",
-    "imageAlt": "FPS 帧律项目文档中的工作台界面",
+    "image": "images/fps-060-home.webp",
+    "imageAlt": "FPS 帧律 v0.6.0 的首页，展示开局准备、系统状态和常用入口",
     "subtitle": "这项调校值不值得留，用同一台电脑做一次 A/B 对照。",
     "problem": "系统设置、驱动画质和游戏准备散落在不同入口。改了什么、是否有效、怎样恢复，都需要清楚的记录。",
     "approach": "GUI 与 CLI 共用调校引擎，逐项解释状态、权限和副作用。写入受支持的设置前保存原值，再用同机 A/B 与性能会话判断是否保留。",
@@ -33,8 +33,8 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/jidekaixin2dian/fps-tune/blob/main/catalog/catalog.json"
       ],
       [
-        "截图来源 · v0.6.0 文档",
-        "https://github.com/jidekaixin2dian/fps-tune/tree/v0.6.0/assets/screenshots"
+        "截图对应版本 · v0.6.0",
+        "https://github.com/jidekaixin2dian/fps-tune/releases/tag/v0.6.0"
       ]
     ],
     "release": {

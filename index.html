@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="./portfolio.css"><link rel="stylesheet" href="./image-viewer.css">
   <script src="./projects.js" defer></script><script src="./activity.js" defer></script><script src="./activity-view.js" defer></script><script src="./image-viewer.js" defer></script>
   <script src="./site.js" defer></script><script src="./plate.js" defer></script>
+  <link rel="stylesheet" href="./labels.css">
 </head>
 <body>
   <a class="skip-link" href="#work">跳到作品目录</a>
@@ -33,7 +34,7 @@
   <main>
     <section class="hero" aria-labelledby="hero-title" data-enter>
       <div class="wrap">
-        <div class="folio-line"><span><i></i> JIDEKAIXIN2DIAN / PORTFOLIO</span><span>2026</span></div>
+        <div class="folio-line"><span><i></i> jidekaixin2dian / Portfolio</span><span>2026</span></div>
         <div class="hero-spread">
           <div class="hero-copy">
             <h1 id="hero-title"><span class="blue-only" lang="en">Open<br> Works<span class="stop">.</span></span><span class="field-only" lang="en">Field<br> <em>Notes.</em></span></h1>
@@ -44,7 +45,7 @@
             <div class="hero-actions"><a href="#work" class="cta blue-only">浏览作品 <span>↓</span></a><a href="./go/" class="cta field-only">打开《出去一下》 <span>↗</span></a><a href="#work" class="quiet field-only">浏览作品 ↓</a><a href="#contributions" class="quiet blue-only">上游贡献 ↓</a></div>
           </div>
           <div class="plate blue-only">
-            <div class="plate-top"><span>FIG. <b id="plate-number">01</b> / FORM STUDY</span><span>可交互图纸</span></div>
+            <div class="plate-top"><span>Fig. <b id="plate-number">01</b> / Form study</span><span>可交互图纸</span></div>
             <div class="drawing"><div class="register" aria-hidden="true"></div><img class="still" src="./images/trefoil.webp" alt="" width="960" height="560"><canvas id="plate-canvas" tabindex="0" role="img" aria-label="三叶结三维线稿，使用方向键旋转"></canvas></div>
             <div class="plate-foot"><div><strong id="plate-name">Trefoil</strong><small>拖动或使用方向键旋转</small></div><div class="shape-controls" role="group" aria-label="选择图形"><button data-shape="0" aria-pressed="true">三叶结</button><button data-shape="1" aria-pressed="false">圆环</button></div></div>
           </div>
@@ -53,16 +54,16 @@
             <div class="photo-line"><span>上海 · 七宝老镇</span><a href="./go/">翻开路线 ↗</a></div>
           </div>
         </div>
-        <div class="hero-foot"><span class="blue-only">WINDOWS TOOLS　 /　 AGENT WORKFLOWS</span><span class="field-only">SHANGHAI　 /　 WALKING NOTES</span><a href="#work">作品目录 ↓</a></div>
+        <div class="hero-foot"><span class="blue-only">Windows tools / Agent workflows</span><span class="field-only">Shanghai / Walking notes</span><a href="#work">作品目录 ↓</a></div>
       </div>
     </section>
     <section class="activity wrap" id="contributions" aria-labelledby="activity-title">
-      <div class="section-heading"><div><span class="kicker">CHANGELOG</span><h2 id="activity-title">近期进展<span>.</span></h2></div><p>核对至 <time datetime="2026-11-18">2026 年 11 月 18 日</time></p></div>
+      <div class="section-heading"><div><span class="kicker">Changelog</span><h2 id="activity-title">近期进展<span>.</span></h2></div><p>核对至 <time datetime="2026-11-18">2026 年 11 月 18 日</time></p></div>
       <div class="activity-columns"><div><h3>项目更新</h3><div id="release-list"></div></div>
       <div><h3>上游开源贡献</h3><p id="pr-count"></p><div id="pr-highlights"></div><details id="pr-archive"><summary>完整 PR 记录</summary><div id="pr-list"></div></details></div></div>
     </section>
     <section class="work wrap" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><div><span class="kicker">SELECTED WORK</span><h2 id="work-title">作品目录<span>.</span></h2></div><p>工具、插件和开源贡献</p></div>
+      <div class="section-heading"><div><span class="kicker">Selected work</span><h2 id="work-title">作品目录<span>.</span></h2></div><p>工具、插件和开源贡献</p></div>
       <div class="filter-bar"><div class="filter-group" role="group" aria-label="按领域筛选项目"><button class="filter active" data-filter="all" aria-pressed="true">全部作品</button><button class="filter" data-filter="windows" aria-pressed="false">Windows 工具</button><button class="filter" data-filter="agent" aria-pressed="false">AI 工作流</button><button class="filter" data-filter="interface" aria-pressed="false">界面与体验</button></div><p id="result-count" role="status"></p></div>
       <div id="featured-projects"></div><h3 id="collection-heading">更多作品与开源实践</h3><div id="projects" class="project-grid"></div>
       <noscript><p>可以直接在 <a href="https://github.com/jidekaixin2dian">GitHub</a> 浏览项目与发行记录。</p></noscript>
@@ -72,6 +73,6 @@
   <footer class="wrap"><div class="footer-links"><a class="brand" href="#home"><b>jk.</b>记得开心一点</a><a href="./studio.html">实作档案 ↗</a><a href="./journey.html">交互展厅 ↗</a><a href="./go/">出去一下 ↗</a><a href="https://github.com/jidekaixin2dian">GitHub ↗</a></div>
     <p class="field-only credits">七宝照片 © Fabio Achilli，2013 · <a href="https://commons.wikimedia.org/wiki/File:Qibao_Old_Town,_Shanghai,_China_(9740731704).jpg">原图</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
   </footer>
-  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="kicker">PROJECT NOTES</span><div><button id="share-project">复制作品链接</button><button id="dialog-close" aria-label="关闭项目详情">关闭 ×</button></div></div><div id="dialog-content"></div></dialog>
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="kicker">Project notes</span><div><button id="share-project">复制作品链接</button><button id="dialog-close" aria-label="关闭项目详情">关闭 ×</button></div></div><div id="dialog-content"></div></dialog>
   <div class="toast" id="toast" role="status"></div>
 </body></html>
